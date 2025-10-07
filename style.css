@@ -1,0 +1,186 @@
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #233a63; /* céu */
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Sol */
+  .sun {
+    position: absolute;
+    bottom: 15%; /* controla a altura do horizonte */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 280px;
+    background-color: #b53039; /* vermelho sólido */
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  /* Faixa inferior (mar/terra) */
+  .horizon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-color: #b97a6c;
+    z-index: 2; /* acima do sol */
+  }
+
+.text-jp {
+  position: absolute;
+  top: 18%;
+  right: 8%;
+  font-size: 2rem;
+  font-family: 'Noto Serif JP', serif;
+  color: #ffffff;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 4px;
+  z-index: 3;
+}
+
+/* animação individual de cada caractere */
+.text-jp span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(-10px);
+  animation: fadeLetter 0.5s ease forwards;
+}
+
+/* atraso progressivo pra cada caractere */
+.text-jp span:nth-child(1) { animation-delay: 0.2s; }
+.text-jp span:nth-child(2) { animation-delay: 0.4s; }
+.text-jp span:nth-child(3) { animation-delay: 0.6s; }
+.text-jp span:nth-child(4) { animation-delay: 0.8s; }
+.text-jp span:nth-child(5) { animation-delay: 1s; }
+.text-jp span:nth-child(6) { animation-delay: 1.2s; }
+.text-jp span:nth-child(7) { animation-delay: 1.4s; }
+.text-jp span:nth-child(8) { animation-delay: 1.6s; }
+.text-jp span:nth-child(9) { animation-delay: 1.8s; }
+.text-jp span:nth-child(10) { animation-delay: 2s; }
+.text-jp span:nth-child(11) { animation-delay: 2.2s; }
+.text-jp span:nth-child(12) { animation-delay: 2.4s; }
+
+.menu {
+  position: absolute;
+  top: 20%;
+  left: 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  z-index: 3;
+}
+
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0;
+  animation: fadeInMenu 1s ease forwards;
+}
+
+.menu a:nth-child(1) { animation-delay: 2.6s; }
+.menu a:nth-child(2) { animation-delay: 2.8s; }
+.menu a:nth-child(3) { animation-delay: 3s; }
+.menu a:nth-child(4) { animation-delay: 3.2s; }
+
+.menu a:hover {
+  color: #b53039; /* vermelho do sol */
+  transform: translateX(4px);
+  transition: 0.3s ease;
+}
+
+/* Tradução em português */
+.text-pt {
+  position: absolute;
+  top: 18%;
+  right: 15%; /* ligeiramente à esquerda da japonesa */
+  font-size: 1rem;
+  font-family: 'Albert Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  writing-mode: vertical-rl;
+  text-orientation: mixed; /* mantém as letras legíveis */
+  letter-spacing: 2px;
+  opacity: 0;
+  z-index: 3;
+  animation: fadeInTextPT 1.5s ease forwards;
+  animation-delay: 2.5s; /* entra logo depois da frase japonesa */
+}
+
+/* animação da tradução */
+@keyframes fadeInTextPT {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* animação */
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes fadeLetter {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .sun {
+      width: 180px;
+      height: 180px;
+      bottom: 20%;
+    }
+    .text-jp {
+      font-size: 1.5rem;
+      right: 6%;
+      top: 12%;
+    }
+  }
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* força o footer acima de tudo */
+}
+
+.social-icon {
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-decoration: none;
+  opacity: 0;
+  animation: fadeInIcons 1s ease forwards;
+}
+
+.social-icon:nth-child(1) { animation-delay: 3s; }
+.social-icon:nth-child(2) { animation-delay: 3.2s; }
+.social-icon:nth-child(3) { animation-delay: 3.4s; }
+
+.social-icon:hover {
+  color: #b53039; /* vermelho do sol */
+  transform: scale(1.15);
+  transition: all 0.3s ease;
+}
+
+/* animação */
+@keyframes fadeInIcons {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
