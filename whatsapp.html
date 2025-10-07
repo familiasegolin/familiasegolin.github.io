@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Contato</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="whatsapp.css">
+
+</head>
+<body>
+
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="quem-somos.html">Quem somos</a>
+  <a href="galeria.html">Galeria</a>
+  <a href="apoio.html">Apoie-nos 2026</a>
+  <a href="ofertar.html">Como ofertar</a>
+</nav>
+
+
+
+  <div class="sun"></div>
+  <div class="horizon"></div>
+
+  <img src="assets/familia.jpeg" alt="Família Segolin" class="profile-img">
+  <h1>Família Segolin em Missões</h1>
+  <p class="subtitle">Contato via WhatsApp.</p>
+
+  <div class="links">
+    <a href="https://api.whatsapp.com/send?phone=819063493221&text=Ol%C3%A1%2C%20Rebecca!" target="_blank" class="link-card">
+      <img src="assets/rebecca.jpeg" alt="Rebecca Segolin">
+      <div class="link-text">
+        <div class="link-title">WhatsApp da Rebecca</div>
+      </div>
+    </a>
+
+    <a href="https://api.whatsapp.com/send?phone=817022824829&text=Ol%C3%A1%2C%20J%C3%BAlio!" target="_blank" class="link-card">
+      <img src="assets/julio.jpeg" alt="Júlio César Segolin">
+      <div class="link-text">
+        <div class="link-title">WhatsApp do Júlio César</div>
+      </div>
+    </a>
+
+    <a href="https://chat.whatsapp.com/BfkTFQK31rU9ThG0Ek1Ogu?mode=wwt" target="_blank" class="link-card">
+      <img src="assets/grupo.jpeg" alt="Grupo de Informativos">
+      <div class="link-text">
+        <div class="link-title">Grupo de Informativos</div>
+        <div class="link-subtitle">Por favor, se identifique no privado para ser aceito no grupo.</div>
+      </div>
+    </a>
+  </div>
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
