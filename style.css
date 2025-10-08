@@ -162,6 +162,11 @@
   gap: 10px;
 }
 
+.footer-space {
+  height: 600px; /* mesma altura do footer fixo */
+}
+
+
 .social-icons {
   display: flex;
   gap: 40px;
