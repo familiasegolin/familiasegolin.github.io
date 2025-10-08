@@ -248,7 +248,6 @@ html, body {
 .contas-container {
   text-align: left;
   width: 90%;
-  max-width: 360px;
   background-color: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 12px;
@@ -259,8 +258,7 @@ html, body {
   z-index: 3;
 
   /* 🔹 Scroll interno elegante */
-  max-height: 220px;          /* define altura máxima */
-  overflow-y: auto;           /* ativa rolagem vertical */
+   overflow-y: auto;           /* ativa rolagem vertical */
   scrollbar-width: thin;      /* Firefox */
   scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
 }
