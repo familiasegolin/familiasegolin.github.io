@@ -28,7 +28,7 @@
   <a href="sobre.html">Quem somos</a>
   <a href="galeria.html">Galeria</a>
   <a href="apoio.html">Apoie-nos 2026</a>
-  <a href="oferta.html">Como ofertar</a>
+  <a href="oferta.html" class="active">Como ofertar</a>
 </nav>
 
 
@@ -46,6 +46,9 @@
     <option value="real">🇧🇷 Real (BRL)</option>
     <option value="dolar">🇺🇸 Dólar (USD)</option>
     <option value="iene">🇯🇵 Iene (JPY)</option>
+      <option value="euro">🇪🇺 Euro (EUR)</option>
+  <option value="libra">🇬🇧 Libra Esterlina (GBP)</option>
+  <option value="aud">🇦🇺 Dólar Australiano (AUD)</option>
   </select>
 </div>
 
@@ -107,18 +110,61 @@ function mostrarConta() {
       <p><strong>Routing number (para transferências via ACH e WIre):</strong> 084009519</p>
       <p><strong>Swift/BIC:</strong> TRWIUS35XXX</p>
       <p><strong>Endereço:</strong> Wise US Inc, 108 W 13th St, Wilmington, DE, 19801, United States</p>
-      <br><p><strong>Obs.: </strong> O código Swift/BIC e endereço são usados apenas caso você não esteja transferindo dos EUA</p>
-      <p><strong>Obs 2.: </strong> As transferências ACH são gratuitas, já as transferências Wire custam 6,11 USD</p>
-
+      <br><p><strong>Obs.: </strong> As transferências ACH são gratuitas, já as transferências Wire e Swift custam 6,11 USD.</p>
+      <p><strong>Obs 2.: </strong> Se você estiver enviando de um banco nos Estados Unidos, pode usar estes dados para fazer uma transferência doméstica. Se estiver enviando de algum outro lugar, faça uma transferência internacional Swift.</p>
+     
     `;
   } else if (moeda === "iene") {
     html = `
       <h2>🇯🇵 Conta em Iene (JPY)</h2>
+            <p><strong>Wise tag:</strong> @rebeccag1531</p>
+      <p><strong>----------------------</strong></p>
       <p><strong>Banco:</strong> ゆうちょ銀行 (Japan Post Bank)</p>
-      <p><strong>支店番号 (Branch):</strong> 138</p>
-      <p><strong>口座番号 (Account):</strong> 9876543</p>
-      <p><strong>名義 (Nome):</strong> セゴリン ジュリオ</p>
+      <p><strong>支店番号 (Agência):</strong> 12350</p>
+      <p><strong>口座番号 (Conta):</strong> 60138701</p>
+      <p><strong>名義 (Nome):</strong> セザール   ゴウベア   セゴリン   ジュリオ (Cesar Gouvêa Segolin Júlio)</p>
     `;
+  } else if (moeda === "euro") {
+    html = `
+      <h2>🇪🇺 Conta em Euro (EUR)</h2>
+            <p><strong>Wise tag:</strong> @rebeccag1531</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Nome:</strong> Rebecca Gouvêa Segolin</p>
+      <p><strong>IBAN:</strong> BE68 9051 5402 9034</p>
+      <p><strong>Swift/BIC:</strong> TRWIBEB1XXX</p>
+      <p><strong>Nome e endereço do banco:</strong> Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium</p>
+      <br><p><strong>Obs.: </strong> As transferências Swift custam 2,39 EUR.</p>
+      <p><strong>Obs 2.: </strong> Se você estiver enviando de um banco na zona SEPA, pode usar estes dados para fazer uma transferência doméstica. Se estiver enviando de algum outro lugar, faça uma transferência internacional Swift.</p>
+      `;
+  }
+  else if (moeda === "libra") {
+    html = `
+      <h2>🇬🇧 Conta em Libra Esterlina (GBP)</h2>
+            <p><strong>Wise tag:</strong> @rebeccag1531</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Nome:</strong> Rebecca Gouvêa Segolin</p>
+      <p><strong>Conta:</strong> 83959844</p>
+      <p><strong>Sort Code:</strong> 23-14-70</p>
+            <p><strong>IBAN:</strong> GB09 TRWI 2314 7083 9598 44</p>
+      <p><strong>Swift/BIC:</strong> TRWIGB2LXXX</p>
+      <p><strong>Nome e endereço do banco:</strong> Wise Payments Limited, 1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom</p>
+      <br><p><strong>Obs.: </strong> As transferências Swift custam 2,39 EUR.</p>
+      <p><strong>Obs 2.: </strong> Se você estiver enviando de um banco no Reino Unido, pode usar estes dados para fazer uma transferência doméstica. Se estiver enviando de algum outro lugar, faça uma transferência internacional Swift.</p>
+      `;
+  }
+  else if (moeda === "aud") {
+    html = `
+      <h2>🇦🇺 Conta em Dólar Australiano (AUD)</h2>
+            <p><strong>Wise tag:</strong> @rebeccag1531</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Nome:</strong> Rebecca Gouvêa Segolin</p>
+      <p><strong>Conta:</strong> 221782444</p>
+      <p><strong>Código BSB:</strong> 774001</p>
+      <p><strong>Swift/BIC:</strong> TRWIAUS1XXX</p>
+      <p><strong>Nome e endereço do banco:</strong> Wise Australia Pty Ltd, Suite 1, Level 11, 66 Goulburn Street, Sydney, NSW, 2000, Australia</p>
+      <br><p><strong>Obs.: </strong> As transferências Swift custam 6,24 AUD.</p>
+      <p><strong>Obs 2.: </strong> Se você estiver enviando de um banco na Austrália, pode usar estes dados para fazer uma transferência doméstica. Se estiver enviando de algum outro lugar, faça uma transferência internacional Swift.</p>
+      `;
   }
 
   container.innerHTML = html;

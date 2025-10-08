@@ -183,6 +183,14 @@ html, body {
   }
 }
 
+/* ======== Página ativa ======== */
+.menu a.active {
+  color: #b53039; /* mesmo vermelho do hover */
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+
 /* ======== Dropdown de moeda ======== */
 .moeda-dropdown {
   z-index: 3;
