@@ -203,3 +203,24 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* === Ajustes para telas altas (como iPad em retrato) === */
+@media (min-height: 1000px) {
+  .sun {
+    bottom: 22%; /* sobe o sol */
+  }
+
+  .horizon {
+    height: 28%; /* reduz o mar um pouco pra equilibrar */
+  }
+}
+
+/* === Ajuste fino para tablets médios (iPad deitado, etc.) === */
+@media (min-height: 800px) and (max-height: 999px) {
+  .sun {
+    bottom: 18%;
+  }
+
+  .horizon {
+    height: 32%;
+  }
+}
