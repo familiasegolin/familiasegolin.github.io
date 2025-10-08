@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Quem Somos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sobre.css">
+
+</head>
+<body>
+
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="sobre.html" class="active">Quem somos</a>
+  <a href="galeria.html">Galeria</a>
+  <a href="apoio.html">Apoie-nos 2026</a>
+  <a href="oferta.html">Como ofertar</a>
+</nav>
+  <div class="sun"></div>
+  <div class="horizon"></div>
+
+<div class="content">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <section class="slide active">
+        <div class="slide-inner">
+          <h1>Apresentação pessoal</h1>
+          <p>Olá! Eu me chamo Rebecca, meu marido é o Júlio César, e no dia que escrevo temos mais um integrante da família no forninho, então nossa família vai crescer em breve. Tanto eu como meu marido somos missionários em tempo integral no Japão 🇯🇵. O visto do Júlio é o religioso e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2028), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <h1>Como viemos e vivemos</h1>
+          <p>Viemos ao Japão movidos por um chamado claro de Deus. Vivemos em Nagano, onde servimos em comunidades locais, aprendendo a língua e a cultura para melhor comunicar o amor de Cristo.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <h1>Projetos</h1>
+          <p>Desenvolvemos projetos voltados à evangelização, discipulado e apoio a famílias. Entre eles estão estudos bíblicos, eventos comunitários e suporte a igrejas locais.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <h1>Por que o Japão</h1>
+          <p>O Japão é um dos países com menor número de cristãos no mundo. Nosso coração arde por ver este povo conhecer a esperança que há em Jesus.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <h1>Igrejas envolvidas</h1>
+          <p>Temos caminhado com igrejas no Brasil e no Japão que nos apoiam em oração e sustento. Essa parceria é essencial para que o trabalho missionário floresça.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <h1>Faça parte</h1>
+          <p>Você pode fazer parte orando, contribuindo ou divulgando nosso trabalho. Juntos, podemos levar a mensagem de Cristo mais longe.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+        <a href="/whatsapp.html" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
+</script>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function showSlide(index) {
+  const slider = document.querySelector('.slider');
+  current = (index + slides.length) % slides.length;
+  slider.style.transform = `translateX(-${current * 100}%)`;
+}
+
+document.getElementById('prev').addEventListener('click', () => showSlide(current - 1));
+document.getElementById('next').addEventListener('click', () => showSlide(current + 1));
+</script>
+
+
+</body>
+</html>
