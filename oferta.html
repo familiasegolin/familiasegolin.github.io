@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Oferta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="oferta.css">
+
+</head>
+<body>
+
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Quem somos</a>
+  <a href="galeria.html">Galeria</a>
+  <a href="apoio.html">Apoie-nos 2026</a>
+  <a href="oferta.html">Como ofertar</a>
+</nav>
+
+
+
+  <div class="sun"></div>
+  <div class="horizon"></div>
+
+  <img src="assets/familia.jpeg" alt="Família Segolin" class="profile-img">
+  <h1>Família Segolin em Missões</h1>
+<p class="subtitle">Obrigada por contribuir e confiar em nós. Deus te abençoe!</p>
+
+<div class="moeda-dropdown">
+  <select id="moedaSelect" onchange="mostrarConta()">
+    <option value="">Escolha a moeda   </option>
+    <option value="real">🇧🇷 Real (BRL)</option>
+    <option value="dolar">🇺🇸 Dólar (USD)</option>
+    <option value="iene">🇯🇵 Iene (JPY)</option>
+  </select>
+</div>
+
+<div id="contas-container" class="contas-container" style="display: none;"></div>
+
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+        <a href="/whatsapp.html" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
+<script>
+function mostrarConta() {
+  const select = document.getElementById("moedaSelect");
+  const container = document.getElementById("contas-container");
+  const moeda = select.value;
+  
+  // Esconde o bloco se nada for selecionado
+  if (!moeda) {
+    container.style.display = "none";
+    container.innerHTML = "";
+    return;
+  }
+
+  let html = "";
+
+  if (moeda === "real") {
+    html = `
+      <h2>🇧🇷 Conta em Reais (BRL)</h2>
+      <p><strong>Banco:</strong> Nubank (260)</p>
+      <p><strong>Agência:</strong> 0001  /  <strong>Conta:</strong> 923268-0</p>
+      <p><strong>CPF/PIX:</strong> 176.187.957-03</p>
+      <p><strong>PIX:</strong> familiasegolin@gmail.com</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Banco:</strong> Caixa Econômica Federal (104)</p>
+      <p><strong>Agência:</strong> 1210  /  <strong>Op:</strong> 013  /  <strong>Poupança:</strong> 34357-5</p>
+      <p><strong>CPF:</strong> 381.431.908-70</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Wise tag:</strong> @rebeccag1531</p>
+    `;
+  } else if (moeda === "dolar") {
+    html = `
+      <h2>🇺🇸 Conta em Dólar (USD)</h2>
+      <p><strong>Wise tag:</strong> @rebeccag1531</p>
+      <p><strong>----------------------</strong></p>
+      <p><strong>Nome:</strong> Rebecca Gouvêa Segolin</p>
+      <p><strong>Deposit account:</strong> 709403822222360</p>
+      <p><strong>Routing number (para transferências via ACH e WIre):</strong> 084009519</p>
+      <p><strong>Swift/BIC:</strong> TRWIUS35XXX</p>
+      <p><strong>Endereço:</strong> Wise US Inc, 108 W 13th St, Wilmington, DE, 19801, United States</p>
+      <br><p><strong>Obs.: </strong> O código Swift/BIC e endereço são usados apenas caso você não esteja transferindo dos EUA</p>
+      <p><strong>Obs 2.: </strong> As transferências ACH são gratuitas, já as transferências Wire custam 6,11 USD</p>
+
+    `;
+  } else if (moeda === "iene") {
+    html = `
+      <h2>🇯🇵 Conta em Iene (JPY)</h2>
+      <p><strong>Banco:</strong> ゆうちょ銀行 (Japan Post Bank)</p>
+      <p><strong>支店番号 (Branch):</strong> 138</p>
+      <p><strong>口座番号 (Account):</strong> 9876543</p>
+      <p><strong>名義 (Nome):</strong> セゴリン ジュリオ</p>
+    `;
+  }
+
+  container.innerHTML = html;
+  container.style.display = "block";
+}
+</script>
+
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
