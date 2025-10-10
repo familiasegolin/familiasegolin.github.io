@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Família Segolin | Quem Somos</title>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="sobre.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sobre.css">
+
 </head>
 <body>
 
@@ -27,26 +31,26 @@
   <a href="oferta.html">Como ofertar</a>
 </nav>
 
-<div class="sun"></div>
-<div class="horizon"></div>
 
-<!-- ======== CONTEÚDO ======== -->
-<div class="sobre-container">
 
-  <div class="section-header">
-    <button class="arrow prev" onclick="prevSection()">‹</button>
-    <h1 id="section-title">Apresentação pessoal</h1>
-    <button class="arrow next" onclick="nextSection()">›</button>
-  </div>
+  <div class="sun"></div>
+  <div class="horizon"></div>
 
-  <div class="text-block" id="section-text">
-    <p>
-      Olá! Eu me chamo Rebecca, meu marido é o Júlio César, e no dia que escrevo temos mais um integrante da família no forninho, então nossa família vai crescer em breve. Tanto eu como meu marido somos missionários em tempo integral no Japão 🇯🇵. O visto do Júlio é o religioso e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2028), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte.
-    </p>
-  </div>
-
+<!-- ======== Seleção de seção ======== -->
+<div class="secao-dropdown">
+  <select id="secaoSelect" onchange="mostrarSecao()">
+    <option value="apresentacao">Apresentação pessoal</option>
+    <option value="chamado">Nosso chamado</option>
+    <option value="missao">Nossa missão no Japão</option>
+  </select>
 </div>
 
+<!-- ======== Conteúdo das seções ======== -->
+<div id="conteudoSecao" class="conteudo-secao" style="display:none;"></div>
+
+
+
+  <div class="footer-space"></div>
 <footer class="footer">
   <div class="social-icons">
     <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
@@ -55,68 +59,68 @@
     <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
       <i class="fa-brands fa-youtube"></i>
     </a>
-    <a href="/whatsapp.html" class="social-icon">
+        <a href="/whatsapp.html" class="social-icon">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
+
   <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
 </footer>
 
 <script>
-const sections = [
-  {
-    title: "Apresentação pessoal",
-    text: "Somos a Família Segolin, missionários comprometidos com o anúncio do Evangelho no Japão. Nosso desejo é servir o Senhor com fidelidade e amor, compartilhando Sua Palavra através de relacionamentos, discipulado e serviço à comunidade."
-  },
-  {
-    title: "Como viemos e vivemos",
-    text: "Viemos ao Japão movidos por um chamado claro de Deus, com o coração disposto a aprender, servir e semear o Evangelho nesta nação. Vivemos sustentados por ofertas de igrejas e irmãos que acreditam nessa missão."
-  },
-  {
-    title: "Projetos",
-    text: "Atuamos com evangelismo relacional, estudos bíblicos, discipulado e apoio às famílias. Também desenvolvemos materiais cristãos bilíngues e conteúdos evangelísticos nas redes sociais."
-  },
-  {
-    title: "Por que o Japão",
-    text: "O Japão é uma nação com menos de 1% de cristãos. Apesar de sua prosperidade, há uma grande sede espiritual e solidão. Cremos que o Evangelho é a resposta e queremos ser instrumentos nas mãos de Deus aqui."
-  },
-  {
-    title: "Igrejas envolvidas",
-    text: "Somos enviados pela Igreja Batista em Pernambuco e cooperamos com comunidades cristãs locais no Japão, fortalecendo igrejas e formando novos discípulos."
-  },
-  {
-    title: "Faça parte",
-    text: "Você pode participar orando, contribuindo e compartilhando o nosso trabalho. Sua parceria é essencial para que continuemos levando a esperança de Cristo ao Japão."
-  }
-];
-
-let currentIndex = 0;
-const titleEl = document.getElementById("section-title");
-const textEl = document.getElementById("section-text");
-
-function updateSection() {
-  titleEl.textContent = sections[currentIndex].title;
-  textEl.innerHTML = `<p>${sections[currentIndex].text}</p>`;
-  textEl.scrollTop = 0; // volta o scroll pro topo
-}
-
-function nextSection() {
-  currentIndex = (currentIndex + 1) % sections.length;
-  updateSection();
-}
-
-function prevSection() {
-  currentIndex = (currentIndex - 1 + sections.length) % sections.length;
-  updateSection();
-}
-
 function toggleMenu() {
-  const menu = document.querySelector(".menu");
-  const toggle = document.querySelector(".menu-toggle");
-  menu.classList.toggle("open");
-  toggle.style.display = menu.classList.contains("open") ? "none" : "block";
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
 }
 </script>
+
+<script>
+function mostrarSecao() {
+  const select = document.getElementById("secaoSelect");
+  const container = document.getElementById("conteudoSecao");
+  const secao = select.value;
+
+  if (!secao) {
+    container.style.display = "none";
+    container.innerHTML = "";
+    return;
+  }
+
+  let html = "";
+
+  if (secao === "apresentacao") {
+    html = `
+      <h2>Apresentação pessoal</h2>
+      <p>Olá! Eu me chamo Rebecca, meu marido é o Júlio César, e no dia que escrevo temos mais um integrante da família no forninho, então nossa família vai crescer em breve. Tanto eu como meu marido somos missionários em tempo integral no Japão 🇯🇵. O visto do Júlio é o religioso e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2028), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte.</p>
+    `;
+  } else if (secao === "chamado") {
+    html = `
+      <h2>Nosso chamado</h2>
+      <p>Em 2021, sentimos o direcionamento de Deus para servir no Japão. O processo envolveu preparo espiritual, emocional e cultural...</p>
+    `;
+  } else if (secao === "missao") {
+    html = `
+      <h2>Nossa missão no Japão</h2>
+      <p>Temos como propósito plantar e fortalecer igrejas, discipular novos convertidos e auxiliar famílias no crescimento em Cristo...</p>
+    `;
+  }
+
+  container.innerHTML = html;
+  container.style.display = "block";
+}
+window.addEventListener("load", mostrarSecao);
+
+</script>
+
+
 
 </body>
 </html>

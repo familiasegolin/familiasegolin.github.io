@@ -1,5 +1,9 @@
-/* ======== Neutraliza delays ======== */
-.menu a, .text-jp span, .text-pt, .footer .social-icon, .credit {
+/* ======== Neutraliza delays e animações da home ======== */
+.menu a,
+.text-jp span,
+.text-pt,
+.footer .social-icon,
+.credit {
   opacity: 1 !important;
   animation: none !important;
   transform: none !important;
@@ -7,109 +11,17 @@
 
 /* ======== Layout geral ======== */
 body {
-  color: white;
-  font-family: 'Albert Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
+  color: white;
+  padding-top: 60px;
+  font-family: 'Albert Sans', sans-serif;
   overflow-x: hidden;
-  overflow-y: hidden;
   min-height: 100vh;
   position: relative;
-}
-
-/* ======== Container ======== */
-.sobre-container {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 900px;
-  margin: 120px auto 80px;
-  padding: 0 24px;
-  box-sizing: border-box;
-}
-
-/* ======== Título fixo e setas ======== */
-.section-header {
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  background-color: rgba(35, 58, 99, 0.9);
-  padding: 10px 24px;
-  border-radius: 10px;
-  z-index: 120;
-  max-width: 90%;
-  box-sizing: border-box;
-}
-
-.section-header h1 {
-  font-size: 1.5rem;
-  color: #b53039;
-  border-left: 4px solid #b53039;
-  padding-left: 12px;
-  margin: 0;
-  white-space: normal;
-  text-align: center;
-  line-height: 1.4;
-  max-width: 70vw;
-  word-wrap: break-word;
-}
-
-/* ======== Setas ======== */
-.arrow {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.6rem;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
-  padding: 4px 10px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.arrow:hover {
-  color: #b53039;
-  transform: scale(1.2);
-}
-
-/* ======== Bloco de texto rolável ======== */
-.text-block {
-  margin-top: 160px;
-  max-height: calc(100vh - 320px); /* evita sobreposição com footer e sol */
-  overflow-y: auto;
-  padding: 0 22px 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #b53039 rgba(255, 255, 255, 0.1);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text-block::-webkit-scrollbar {
-  width: 6px;
-}
-
-.text-block::-webkit-scrollbar-thumb {
-  background-color: #b53039;
-  border-radius: 10px;
-}
-
-/* ======== Texto ======== */
-.text-block p {
-  text-align: justify;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  word-wrap: break-word;
-  margin: 0 0 1.5em;
 }
 
 /* ======== Footer ======== */
@@ -124,27 +36,51 @@ body {
   z-index: 10;
 }
 
-/* ======== Menu ======== */
+.social-icon {
+  color: #ffffff;
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: #b53039;
+  transform: scale(1.15);
+}
+
+/* ======== Responsivo ======== */
+@media (max-width: 768px) {
+  h1 { font-size: 1.4rem; }
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* remove rolagem */
+}
+
+/* ======== MENU ======== */
 .menu {
   position: absolute;
   top: 20%;
   left: 6%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* garante alinhamento à esquerda */
+  justify-content: flex-start;
   gap: 25px;
+  font-family: 'Albert Sans', sans-serif;
   font-size: 1.3rem;
-  z-index: 200;
+  letter-spacing: 0.04em;
+  z-index: 20;
 }
 
 .menu a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-.menu a:hover,
-.menu a.active {
+.menu a:hover {
   color: #b53039;
   transform: translateX(4px);
 }
@@ -158,12 +94,12 @@ body {
   position: absolute;
   top: 25px;
   left: 25px;
-  z-index: 300;
+  z-index: 100;
   background: none;
   border: none;
 }
 
-/* ======== Botão de fechar ======== */
+/* ======== Botão de fechar (X) ======== */
 .close-btn {
   display: none;
   position: absolute;
@@ -176,39 +112,13 @@ body {
   cursor: pointer;
 }
 
-/* ======== Responsivo ======== */
+/* ======== Modo responsivo ======== */
 @media (max-width: 900px) {
-  .section-header {
-    top: 85px;
-    gap: 12px;
-    padding: 8px 18px;
-  }
-
-  .section-header h1 {
-    font-size: 1.25rem;
-    max-width: 65vw;
-  }
-
-  .arrow {
-    font-size: 1.5rem;
-    padding: 2px 6px;
-  }
-
-  .text-block {
-    margin-top: 145px;
-    max-height: calc(100vh - 290px);
-    padding: 0 20px 8px;
-  }
-
-  .text-block p {
-    font-size: 0.97rem;
-    line-height: 1.6;
-  }
-
   .menu-toggle {
     display: block;
   }
 
+  /* Esconde o menu padrão e cria o painel lateral */
   .menu {
     position: fixed;
     top: 0;
@@ -216,17 +126,131 @@ body {
     background-color: rgba(35, 58, 99, 0.97);
     height: 100%;
     width: 70%;
-    transform: translateX(-100%);
-    transition: transform 0.4s ease;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
     padding-left: 40px;
+    gap: 25px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
   }
 
   .menu.open {
     transform: translateX(0);
   }
 
+  .menu a {
+    font-size: 1.4rem;
+  }
+
   .menu.open .close-btn {
     display: block;
   }
+
+  /* Esconde o menu hamburguer quando o menu estiver aberto */
+  .menu.open ~ .menu-toggle {
+    display: none;
+  }
+
+  .subtitle {
+  text-align: left;
+  width: 90%;
+  max-width: 600px;
+  line-height: 1.5;
+  animation: fadeIn 0.4s ease;
+  z-index: 3;
+  padding-left: 0%;
+
+
+ /* 🔹 Scroll interno elegante */
+  overflow-y: auto;           /* ativa rolagem vertical */
+  scrollbar-width: thin;      /* Firefox */
+  scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
+}
+}
+
+/* ======== Página ativa ======== */
+.menu a.active {
+  color: #b53039; /* mesmo vermelho do hover */
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+/* ======== Dropdown das seções ======== */
+.secao-dropdown {
+  z-index: 3;
+  margin-bottom: 25px;
+    position: relative;
+  display: inline-block;
+}
+
+.secao-dropdown select {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+    background-color: #1f2f4d;
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 1rem;
+  padding: 10px 36px 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  appearance: none;
+  text-align: center;
+}
+
+.secao-dropdown::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.secao-dropdown select:hover,
+.secao-dropdown select:focus {
+  background-color: rgba(255,255,255,0.15);
+}
+
+.secao-dropdown select option {
+  background-color: #1f2f4d;  /* fundo sólido, visível */
+  color: #ffffff;             /* texto branco */
+  padding: 8px;
+  font-size: 1rem;
+}
+
+/* ======== Área de conteúdo ======== */
+.conteudo-secao {
+ text-align: left;
+  width: 90%;
+  max-width: 600px;
+  line-height: 1.5;
+  animation: fadeIn 0.4s ease;
+  z-index: 3;
+  padding-left: 180px;
+  padding-right: 2%;
+
+ /* 🔹 Scroll interno elegante */
+  overflow-y: auto;           /* ativa rolagem vertical */
+  scrollbar-width: thin;      /* Firefox */
+  scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
+
+}
+
+.conteudo-secao::-webkit-scrollbar {
+  width: 6px;
+}
+
+.conteudo-secao::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+.conteudo-secao h2 {
+  color: #b53039;
+  padding-left: 10px;
+  margin-bottom: 15px;
 }
