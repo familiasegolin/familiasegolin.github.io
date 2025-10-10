@@ -24,18 +24,6 @@ body {
   position: relative;
 }
 
-/* ======== Foto circular ======== */
-.profile-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
-  border: 3px solid #fff;
-  margin-bottom: 20px;
-  z-index: 3;
-}
-
 /* ======== Título e subtítulo ======== */
 h1 {
   font-size: 1.6rem;
