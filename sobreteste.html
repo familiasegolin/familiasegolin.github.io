@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Quem Somos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sobreteste.css">
+
+</head>
+<body>
+
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="sobre.html" class="active">Quem somos</a>
+  <a href="galeria.html">Galeria</a>
+  <a href="apoio.html">Apoie-nos 2026</a>
+  <a href="oferta.html">Como ofertar</a>
+</nav>
+
+
+
+  <div class="sun"></div>
+  <div class="horizon"></div>
+
+  
+  <h1>Família Segolin em Missões</h1>
+<p class="subtitle"> Olá! Eu me chamo Rebecca, meu marido é o Júlio César, e no dia que escrevo temos mais um integrante da família no forninho, então nossa família vai crescer em breve. Tanto eu como meu marido somos missionários em tempo integral no Japão 🇯🇵. O visto do Júlio é o religioso e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2028), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte.
+    </p>
+
+  <div class="footer-space"></div>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+        <a href="/whatsapp.html" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
