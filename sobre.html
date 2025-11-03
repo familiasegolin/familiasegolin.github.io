@@ -11,7 +11,7 @@
 />
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="sobre.css">
-
+<link rel="shortcut icon" type="imagex/png" href="./assets/japao.ico">
 </head>
 <body>
 
@@ -40,8 +40,11 @@
 <div class="secao-dropdown">
   <select id="secaoSelect" onchange="mostrarSecao()">
     <option value="apresentacao">Apresentação pessoal</option>
-    <option value="chamado">Nosso chamado</option>
-    <option value="missao">Nossa missão no Japão</option>
+    <option value="visto">Como vivemos no Japão</option>
+    <option value="base">Base Missionária</option>
+    <option value="projetos">Nossos projetos</option>
+    <option value="japao">Por que o Japão?</option>
+    <option value="apoio">Quem são nossos apoiadores</option>
   </select>
 </div>
 
@@ -99,17 +102,57 @@ function mostrarSecao() {
   if (secao === "apresentacao") {
     html = `
       <h2>Apresentação pessoal</h2>
-      <p>Olá! Eu me chamo Rebecca, meu marido é o Júlio César, e no dia que escrevo temos mais um integrante da família no forninho, então nossa família vai crescer em breve. Tanto eu como meu marido somos missionários em tempo integral no Japão 🇯🇵. O visto do Júlio é o religioso e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2028), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte.</p>
+      <p>Me chamo Rebecca, sou carioca e meu marido Júlio César é do interior de São Paulo, e enquanto escrevo estou grávida do nosso bebê que vai nascer aqui no Japão. Somos ambos missionários e nos casamos em dezembro de 2021. Sempre envolvidos com a igreja local e missões em nossas cidades e cidades vizinhas, nos capacitando com cursos disponíveis em nossas igrejas. Fizemos uma escola de treinamento da JOCUM em 2020, uma escola de comunicação em 2021, e a eu fiz também uma escola de aconselhamento em 2022. Lideramos juntos uma equipe para o Amazonas nesse mesmo ano, onde trabalhamos com Ribeirinhos e Povos indígenas. Julio também esteve em missões no Sertão de Pernambuco e eu estive no Pantanal antes de nos casarmos. Em janeiro de 2024 trabalhamos com a JAMI no sertão da Paraíba.<br> Chamados para o campo transcultural, Deus feriu nosso coração com o amor dele pela Ásia, em especial o povo japonês. No final de 2022 à março de 2023 estivemos no Japão, com uma equipe para palestrar sobre aconselhamento. Foi um tempo de espiar a terra e fazer conexões. Em novembro de 2024 nos mudamos de vez para ser resposta para esse povo.<br><br> “E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura."<br>Marcos 16:15 ARC</p>
     `;
-  } else if (secao === "chamado") {
+  } else if (secao === "visto") {
     html = `
-      <h2>Nosso chamado</h2>
-      <p>Em 2021, sentimos o direcionamento de Deus para servir no Japão. O processo envolveu preparo espiritual, emocional e cultural...</p>
+      <h2>Como vivemos no Japão</h2>
+      <p>Tanto eu como meu marido somos missionários em tempo integral. O visto do Júlio é o <a href="https://www.visa-agent.net/portuguese/service/for-work/visa-shukyo/">religioso</a> e o meu visto é o de dependente (dele), tem a duração de 3 anos (vence em 2027), mas temos a pretensão de renovar nossos vistos, pois nosso trabalho missionário nessa nação é a longo prazo. Quanto tempo ficaremos? Não sei, 10, 20, 30 anos? Temos uma Palavra para criar raízes, então não pensamos em retornar para o Brasil, apenas para visitar família, igrejas e amigos, mas é uma viagem de alto custo, logo não sabemos com que frequência isso se dará. Temos o planejamento de ir a cada 5 anos, mas as ofertas ainda não são suficientes para criarmos um caixa para a viagem. <br>Nos mantemos financeiramente através de apoiadores mensais, exigido pelo próprio governo japonês ao nos dar o visto religioso, pois esse visto não nos permite termos um trabalho no Japão, e precisamos garantir a Embaixada que somos plenamente sustentados com ofertas. Nossos apoiadores fazem o compromisso anual (janeiro à dezembro), e todo final do ano buscamos novos apoiadores e/ou convidamos os apoiadores atuais a caminhar conosco no ano seguinte. Para se tornar um apoiador, basta preencher o formulário disponibilizado aqui no site, na aba "Apoie-nos".<br><br>Porque eu bem sei os pensamentos que penso de vós, diz o Senhor; pensamentos de paz e não de mal, para vos dar o fim que esperais.”<br>Jeremias 29:11 ARC</p>
     `;
-  } else if (secao === "missao") {
+  } else if (secao === "base") {
     html = `
-      <h2>Nossa missão no Japão</h2>
-      <p>Temos como propósito plantar e fortalecer igrejas, discipular novos convertidos e auxiliar famílias no crescimento em Cristo...</p>
+      <h2>Base Missionária</h2>
+      <p>Atualmente estamos pioneirando a <a href="https://www.youtube.com/watch?v=IuK4Lyn7FO8">Base Missionária da Organização Rising Sun for Asia</a>. A maioria das igrejas e trabalhos missionários se concentram em regiões onde há mais brasileiros, mas a Base onde moramos é uma localidade bem afastada dos brasileiros, no interior do Japão, o que torna desafiador, porém nosso foco como família é os japoneses, então temos nos dedicado ao estudo do japonês e nos relacionado com nossos vizinhos (todos idosos). Como Base, por enquanto somos só nós como família morando e cuidando do local. A Base Missionária e a Organização Rising Sun são uma iniciativa da Igreja MEB (Missão Evangélica Bereana), do pastor Inácio, que nos recebeu aqui no Japão e nos cedeu a moradia para realizarmos os trabalhos concernentes a uma Base Missionária interdenominacional.</p>
+    `;
+  }
+  else if (secao === "projetos") {
+    html = `
+      <h2>Nossos projetos</h2>
+      <p>Mesmo tendo menos de um ano de trabalho, já tornamos fixo dois acampamentos anuais para jovens e adolescentes das igrejas do Japão, com o intuito de capacitar e despertar o coração dessa geração para fazerem a diferença nessa nação. Temos um projeto para ser implantado, tratando dessa área de capacitação e conscientização de missões e evangelização, adaptado para a realidade do Japão.
+
+<br>Um segundo objetivo como base é receber outros missionários que necessitem de um socorro a curto prazo. O Japão é um país estratégico, por se encontrar próximo de muitos países onde os cristãos são perseguidos. A base está disponível para receber missionários que precisem fugir de situações de perseguição, terem um tempo de descanso e reciclagem, onde nós como família também queremos dar palestras voltadas para reacender a chama da esperança do chamado, e assim o missionário pode voltar ao campo pronto para a guerra.
+
+<br>Também estamos disponíveis para receber equipes missionárias que estejam fazendo período prático, como já recebemos uma equipe da Dunamis com menos de 2 meses de base. Por ser uma região majoritariamente japonesa, o trabalho aqui é mais voltado para atos de misericórdia, apoiando na manutenção da base e oferecendo ajuda para os vizinhos, que hoje são nosso maior foco, visto que os japoneses prezam pelo relacionamento antes de ouvir nossa mensagem. Temos relatos pessoais de abertura que nossos vizinhos nos deram, visto que temos investido no relacionamento com eles, apesar das barreiras idiomáticas.
+
+<br>Por fim, e ouso dizer que mais importante, nosso desejo é de abrir uma igreja japonesa nessa região. A longo prazo, semeando o Evangelho nas oportunidades que tivermos, conforme nosso japonês evoluir, queremos oferecer aos japoneses um ambiente de estudo da Palavra e louvor, que posteriormente pode vir a se tornar uma igreja. Para isso investimos nos relacionamentos com nossos vizinhos e buscamos participar de alguns eventos da cidade para conhecer mais japoneses.
+<br><br>“O Senhor tinha dito a Abrão: “Deixe sua terra natal, seus parentes e a família de seu pai e vá à terra que eu lhe mostrarei.”
+
+<br>Gênesis 12:1 NVT</p>
+    `;
+  }
+  else if (secao === "japao") {
+    html = `
+      <h2>Por que o Japão?</h2>
+      <p>Essa é a pergunta que todo missionário com o chamado para o Japão mais escuta.
+O Japão é conhecido como cemitério de missionário, devido à frieza do povo e resistência com o Evangelho. Aconselho que assista o filme “Silêncio” para entender o peso espiritual. Também é conhecido assim por ser um país de primeiro mundo e muitos missionários acabam se deslumbrando, procurando um trabalho secular para ganhar dinheiro e matando a missão (por isso a peculiaridade do visto religioso acaba sendo importante).
+<br>Como um país de maioria budista e xintoísta, essas religiões fazem parte da cultura, e o cristianismo acaba sendo visto como uma “cultura de fora” ou uma “religião ocidental”. O povo japonês é disciplinado e tem a cultura da honra, o que inclui honrar sua própria cultura e tradições.
+<br>O Japão é o segundo país menos evangelizado do mundo, mesmo sendo um país aberto ao Evangelho, não sendo proibido pregar. Cerca de 0,3% apenas são caracterizados como cristãos evangélicos. Apesar de não ser proibido pregar, o Japão também é um país muito silencioso, e você facilmente pode ser acusado de perturbar a paz, o que pede um certo zelo, pois dependendo do japonês que cruzar nosso caminho, podemos ser processados e até expulsos do país.
+<br>O Japão também tem um histórico muito triste de invadir e torturar os países vizinhos, sendo desprezado por grande parte dos asiáticos. A Coreia do Sul em especial sofreu muito no passado nas mãos dos japoneses, sendo este o possível motivo de um país cristão como a Coreia do Sul não enviar forças missionárias para o Japão, que fica do lado.
+<br>Pensando em tudo isso, nosso objetivo é alcançar japoneses. A maioria dos cristãos no Japão são estrangeiros, e muitas igrejas brasileiras não tem liturgias no próprio idioma do país. Nosso japonês ainda é bem básico, mas estamos estudando o idioma e já conseguimos compartilhar da fé, ainda que superficialmente, com nossos vizinhos
+<br><br>“Aquele que é a Palavra possuía a vida, e sua vida trouxe luz a todos. A luz brilha na escuridão, e a escuridão nunca conseguiu apagá-la.”
+<br>João 1:4-5 NVT</p>
+    `;
+  }
+  else if (secao === "apoio") {
+    html = `
+      <h2>Quem são nossos apoiadores</h2>
+      <p><b>Igrejas enviadoras:</b> Estamos ligados a duas igrejas no Brasil, a Igreja Atos 2 em Maricá - RJ, e a Igreja Batista Monte das Oliveiras em Guararapes - SP. São nossas igrejas de envio, que nos apoiam espiritualmente e também com ofertas mensais.
+        <br><b>Igreja recebedora:</b> No Japão, estamos ligados à Igreja MEB, que foi nossa igreja recebedora, e nos apoia com a moradia e espiritualmente.
+        <br><b>Igrejas apoiadoras:</b> Também temos outras igrejas que são igrejas apoiadoras, ou seja, que entenderam a missão de Deus através de nossas vidas e quiseram fazer parte disso mesmo que não estejamos filiados como membros, que são as Igreja Batista da Piedade em Magé – RJ e a Igreja Evangélica Cristo Vive no Rio de Janeiro – RJ. As igrejas apoiadoras nos ajudam orando por nós e enviando oferta mensalmente para nós.
+        <br><b>Apoiadores individuais:</b> Além das igrejas, temos também apoiadores individuais, que são pessoas que creem no nosso chamado e decidiram caminhar conosco financeiramente, orando por nós e nos encorajando. São amigos, familiares e irmãos em Cristo que Deus colocou em nossas vidas para nos ajudar nessa missão, e deles vem a maior parte do nosso sustento mensal.<br>
+        <br>O pouco de cada um, somado, é o que nos sustenta. O Japão é um país caro, e viver aqui como missionários é desafiador. Somos gratos a cada um que faz parte dessa missão conosco, seja com oração, oferta ou palavras de encorajamento.
+        <br><br>"Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.”
+<br>Gálatas 6:2 ARC
     `;
   }
 
