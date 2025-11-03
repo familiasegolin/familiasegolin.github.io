@@ -112,62 +112,7 @@ html, body {
   cursor: pointer;
 }
 
-/* ======== Modo responsivo ======== */
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
-  }
 
-  /* Esconde o menu padrão e cria o painel lateral */
-  .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(35, 58, 99, 0.97);
-    height: 100%;
-    width: 70%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 40px;
-    gap: 25px;
-    transform: translateX(-100%);
-    transition: transform 0.4s ease;
-  }
-
-  .menu.open {
-    transform: translateX(0);
-  }
-
-  .menu a {
-    font-size: 1.4rem;
-  }
-
-  .menu.open .close-btn {
-    display: block;
-  }
-
-  /* Esconde o menu hamburguer quando o menu estiver aberto */
-  .menu.open ~ .menu-toggle {
-    display: none;
-  }
-
-  .subtitle {
-  text-align: left;
-  width: 90%;
-  max-width: 600px;
-  line-height: 1.5;
-  animation: fadeIn 0.4s ease;
-  z-index: 3;
-  padding-left: 0%;
-
-
- /* 🔹 Scroll interno elegante */
-  overflow-y: auto;           /* ativa rolagem vertical */
-  scrollbar-width: thin;      /* Firefox */
-  scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
-}
-}
 
 /* ======== Página ativa ======== */
 .menu a.active {
@@ -253,4 +198,61 @@ html, body {
   color: #b53039;
   padding-left: 10px;
   margin-bottom: 15px;
+}
+
+/* ======== Modo responsivo ======== */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Esconde o menu padrão e cria o painel lateral */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(35, 58, 99, 0.97);
+    height: 100%;
+    width: 70%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 40px;
+    gap: 25px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+
+  .menu a {
+    font-size: 1.4rem;
+  }
+
+  .menu.open .close-btn {
+    display: block;
+  }
+
+  /* Esconde o menu hamburguer quando o menu estiver aberto */
+  .menu.open ~ .menu-toggle {
+    display: none;
+  }
+
+  .subtitle {
+  text-align: left;
+  width: 90%;
+  max-width: 600px;
+  line-height: 1.5;
+  animation: fadeIn 0.4s ease;
+  z-index: 3;
+  padding-left: 0%;
+
+
+ /* 🔹 Scroll interno elegante */
+  overflow-y: auto;           /* ativa rolagem vertical */
+  scrollbar-width: thin;      /* Firefox */
+  scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
+}
 }
