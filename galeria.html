@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Galeria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="galeria.css">
+<link rel="shortcut icon" type="imagex/png" href="./assets/japao.ico">
+</head>
+<body>
+
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Quem somos</a>
+  <a href="galeria.html" class="active">Galeria</a>
+  <a href="apoio.html">Apoie-nos 2026</a>
+  <a href="oferta.html">Como ofertar</a>
+</nav>
+
+
+  <div class="sun"></div>
+  <div class="horizon"></div>
+
+<div class="content">
+  <h1>Galeria</h1>
+<p>Acesse nossos álbuns de fotos e vídeos do Google Fotos:</p>
+<ul>
+  <li><a href="https://photos.app.goo.gl/BFbxWe61oppBqfvb6">Japão 2024-2025</a></li>
+  <li><a href="https://photos.app.goo.gl/CzbRCMxLwb3EzPsQ9">São Paulo 2024</a></li>
+  <li><a href="https://photos.app.goo.gl/BDygW2R6q5tFzYYr6">Rio de Janeiro 2024</a></li>
+  <li><a href="https://photos.app.goo.gl/jsPEVqm7vqnygDu3A">Sertão da Paraíba 2024</a></li>
+  <li><a href="https://photos.app.goo.gl/uUrXkTvzdvBhk2aq5">São Paulo 2023</a></li>
+  <li><a href="https://photos.app.goo.gl/99cGr4G8H4p8GL2z7">Rio de Janeiro 2023</a></li>
+  <li><a href="https://photos.app.goo.gl/sjvwEy1fM3oqkSqr5">Japão 2022-2023</a></li>
+  <li><a href="https://photos.app.goo.gl/z8Mtnt34h79iCvf6A">Paraná 2022</a></li>
+  <li><a href="https://photos.app.goo.gl/pfSTNBgs2RCFT1UdA">Amazonas 2022</a></li>
+  <li><a href="https://photos.app.goo.gl/jDaDZdAns7z3gG6p7">Rio de Janeiro 2022</a></li>
+  <li><a href="https://photos.app.goo.gl/stafWMW8iYvXvrr87">Casamento 2021-2022</a></li>  
+  <li><a href="https://photos.app.goo.gl/HrrhDURJbV1CN6Yy7">Paraná 2021</a></li>
+  <li><a href="https://photos.app.goo.gl/ESd8ygksBb9oKyKVA">Rio de Janeiro 2021</a></li>
+  <li><a href="https://photos.app.goo.gl/m2xMFbWGc95ZxneM9">São Paulo 2021</a></li>
+  <li><a href="https://photos.app.goo.gl/peiMiKePFzNd4aiv9">Pantanal e Bolívia 2020-2021 (Rebecca)</a></li>
+  <li><a href="https://photos.app.goo.gl/53vz6YKJGm4GnGgz8">Paraná 2020 (Rebecca)</a></li>
+  <li><a href="https://photos.app.goo.gl/BJSoQzTCrEn95j1NA">2018-2020 (Rebecca)</a></li>
+</ul>
+</div>
+
+  <div class="footer-space"></div>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+        <a href="/whatsapp.html" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
