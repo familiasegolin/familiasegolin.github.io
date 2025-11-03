@@ -142,7 +142,8 @@ h1,p{
     z-index: 3;
   position: relative;
   display: inline-block;
-      padding-left:2%;
+      padding-left:5%;
+      padding-right:5%;
 }
   /* Esconde o menu padrão e cria o painel lateral */
   .menu {
