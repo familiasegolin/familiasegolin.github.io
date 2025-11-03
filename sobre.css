@@ -255,4 +255,9 @@ html, body {
   scrollbar-width: thin;      /* Firefox */
   scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
 }
+/* ======== Área de conteúdo ======== */
+.conteudo-secao {
+  padding-left: 2%;
+}
+
 }
