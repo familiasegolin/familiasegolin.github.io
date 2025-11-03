@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Família Segolin | Formulário de Apoio</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css">
-<link
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Família Segolin | Formulário de apoio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="apoio.css">
 <link rel="shortcut icon" type="imagex/png" href="./assets/japao.ico">
 </head>
 <body>
 
+<!-- ======== MENU ======== -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
 
-<!-- modify this form HTML and place wherever you want your form -->
+<nav class="menu">
+  <button class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Quem somos</a>
+  <a href="galeria.html">Galeria</a>
+  <a href="apoio.html" class="active">Apoie-nos 2026</a>
+  <a href="oferta.html">Como ofertar</a>
+</nav>
+
+
+  <div class="sun"></div>
+  <div class="horizon"></div>
+  <h1>Formulário de apoio 2026</h1>
+<p> Este formulário é um compromisso de apoio mensal que vale de janeiro de 2026 até dezembro de 2026. Caso no decorrer do ano precise encerrar esse compromisso, basta nos comunicar. Obrigada por nos ajudar nessa caminhada.<br><br>"Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.”<br>Gálatas 6:2 ARC</p>
+
 <form id="contact-form" action="https://formspree.io/f/mzzjapbe" method="POST">
   <label>Nome:
-    <input type="text" name="nome" required>
+    <input type="text" name="nome" required><br>
   </label>
   <label>Email:
-    <input type="email" name="email" required>
+    <input type="email" name="email" required><br>
   </label>
   <label>Mensagem:
     <textarea name="mensagem" required></textarea>
@@ -33,28 +53,39 @@
   </p>
 </form>
 
+ <div class="footer-space"></div>
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+        <a href="/whatsapp.html" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
+</footer>
+
 <script>
-  const form = document.getElementById("contact-form");
-  const successMessage = document.getElementById("success-message");
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault(); // impede o redirecionamento
-    const data = new FormData(form);
-
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      form.reset(); // limpa o formulário
-      successMessage.style.display = "block"; // mostra a mensagem
-    } else {
-      alert("Ops! Algo deu errado. Tente novamente.");
-    }
-  });
+function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.classList.toggle('open');
+  
+  // Esconde o menu hamburguer quando o menu está aberto
+  if (menu.classList.contains('open')) {
+    toggle.style.display = 'none';
+  } else {
+    toggle.style.display = 'block';
+  }
+}
 </script>
+
+
 
 
 </body>
