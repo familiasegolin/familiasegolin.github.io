@@ -34,24 +34,81 @@
 
   <div class="sun"></div>
   <div class="horizon"></div>
+
   <h1>Formulário de apoio 2026</h1>
-<p> Este formulário é um compromisso de apoio mensal que vale de janeiro de 2026 até dezembro de 2026. Caso no decorrer do ano precise encerrar esse compromisso, basta nos comunicar. Obrigada por nos ajudar nessa caminhada.<br><br>"Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.”<br>Gálatas 6:2 ARC</p>
+<p>
+  Este formulário é um compromisso de apoio mensal que vale de janeiro de 2026 até dezembro de 2026.
+  Caso, no decorrer do ano, precise encerrar esse compromisso, basta nos comunicar. Não se preocupe nem se envergonhe. Obrigada por nos ajudar nessa caminhada.<br><br>
+  "Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.” - Gálatas 6:2 ARC
+</p>
 
 <form id="contact-form" action="https://formspree.io/f/mzzjapbe" method="POST">
-  <label>Nome:
-    <input type="text" name="nome" required><br>
-  </label>
-  <label>Email:
-    <input type="email" name="email" required><br>
-  </label>
-  <label>Mensagem:
-    <textarea name="mensagem" required></textarea>
-  </label>
-  <button type="submit">Enviar</button>
-  <p id="success-message" style="display:none; color:#b53039; margin-top:10px;">
-    Mensagem enviada com sucesso! 🎉
-  </p>
+  
+  <!-- ===== Passo 1 ===== -->
+  <section id="step1">
+    <label>Você vai apoiar como:*</label><br>
+    <label><input type="radio" name="tipo" value="fisica" required> Pessoa física</label><br>
+    <label><input type="radio" name="tipo" value="juridica"> Pessoa jurídica</label><br>
+    <label><input type="radio" name="tipo" value="igreja"> Igreja</label><br>
+    <label><input type="radio" name="tipo" value="grupo"> Grupo/Família</label><br>
+    <button type="button" onclick="nextStep()">Próximo</button>
+  </section>
+
+<section id="step1b" style="display:none;">
+  <label>Quantas pessoas há no grupo/família?</label><br>
+  <input type="number" id="qtdPessoas" min="1" max="20" required><br>
+  <button type="button" onclick="previousStep()">Anterior</button>
+  <button type="button" onclick="gerarCampos()">Próximo</button>
+</section>
+
+<section id="step1c" style="display:none;">
+  <div id="camposPessoas"></div>
+  <button type="button" onclick="previousStep()">Anterior</button>
+  <button type="button" onclick="nextStep()">Próximo</button>
+</section>
+
+
+<!-- ===== Passo 2 ===== -->
+<section id="step2" style="display:none;">
+  <label id="labelNome">Nome e sobrenome:*<br>
+    <input type="text" id="campoNome" name="nome" required>
+  </label><br>
+
+  <label id="labelAniversario">Aniversário:<br>
+    <input type="date" id="campoAniversario" name="aniversario">
+  </label><br>
+
+  <button type="button" onclick="previousStep()">Anterior</button>
+  <button type="button" onclick="nextStep()">Próximo</button>
+</section>
+
+
+  <!-- ===== Passo 3 ===== -->
+  <section id="step3" style="display:none;">
+    <label>Email:<br>
+      <input type="email" name="email" required>
+    </label><br><br>
+
+    <button type="button" onclick="previousStep()">Anterior</button>
+    <button type="button" onclick="nextStep()">Próximo</button>
+  </section>
+
+  <!-- ===== Passo 4 ===== -->
+  <section id="step4" style="display:none;">
+    <label>Mensagem:<br>
+      <textarea name="mensagem"></textarea>
+    </label><br><br>
+
+    <button type="button" onclick="previousStep()">Anterior</button>
+    <button type="submit">Enviar</button>
+
+    <p id="success-message" style="display:none; color:#b53039; margin-top:10px;">
+      Mensagem enviada com sucesso! 🎉
+    </p>
+  </section>
+
 </form>
+
 
  <div class="footer-space"></div>
 <footer class="footer">
@@ -83,10 +140,152 @@ function toggleMenu() {
     toggle.style.display = 'block';
   }
 }
+
+const form = document.getElementById("contact-form");
+const successMessage = document.getElementById("success-message");
+
+const SECTIONS = {
+  step1: document.getElementById("step1"),
+  step1b: document.getElementById("step1b"),
+  step1c: document.getElementById("step1c"),
+  step2: document.getElementById("step2"),
+  step3: document.getElementById("step3"),
+  step4: document.getElementById("step4"),
+};
+
+let current = "step1";
+let cameFromGroup = false;
+
+function showSection(name) {
+  Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
+  SECTIONS[name] && (SECTIONS[name].style.display = "block");
+  current = name;
+}
+
+function initSteps() {
+  showSection("step1");
+  cameFromGroup = false;
+}
+initSteps();
+
+/* ======= Validação simples ======= */
+function validateSection(sectionEl) {
+  if (!sectionEl) return true;
+  const required = Array.from(sectionEl.querySelectorAll("[required]"));
+  for (const field of required) {
+    if (field.type === "radio") {
+      const group = sectionEl.querySelectorAll(`input[name='${field.name}']`);
+      const checked = Array.from(group).some(r => r.checked);
+      if (!checked) return { ok: false };
+    } else if (!field.value) {
+      return { ok: false };
+    }
+  }
+  return { ok: true };
+}
+
+/* ======= Navegação ======= */
+function nextStep() {
+  const currEl = SECTIONS[current];
+  const valid = validateSection(currEl);
+  if (!valid.ok) {
+    alert("Preencha todos os campos obrigatórios.");
+    return;
+  }
+
+if (current === "step1") {
+  const tipo = document.querySelector('input[name="tipo"]:checked')?.value;
+
+  if (tipo === "grupo") {
+    showSection("step1b");
+    cameFromGroup = true;
+    return;
+  } else {
+    atualizarCamposEtapa2(tipo); // 👈 aqui a mágica acontece
+    showSection("step2");
+    return;
+  }
+}
+
+
+  if (current === "step1b") {
+    gerarCampos();
+    showSection("step1c");
+    return;
+  }
+
+  if (current === "step1c") {
+    showSection("step2");
+    return;
+  }
+
+  if (current === "step2") { showSection("step3"); return; }
+  if (current === "step3") { showSection("step4"); return; }
+}
+
+function atualizarCamposEtapa2(tipo) {
+  const labelNome = document.getElementById("labelNome");
+  const campoNome = document.getElementById("campoNome");
+  const labelAniversario = document.getElementById("labelAniversario");
+  const campoAniversario = document.getElementById("campoAniversario");
+
+  if (tipo === "igreja") {
+    labelNome.childNodes[0].textContent = "Nome da igreja:*";
+    campoNome.name = "nome_igreja";
+    labelAniversario.childNodes[0].textContent = "Aniversário da igreja:";
+    campoAniversario.name = "aniversario_igreja";
+  } else {
+    labelNome.childNodes[0].textContent = "Nome e sobrenome:*";
+    campoNome.name = "nome";
+    labelAniversario.childNodes[0].textContent = "Aniversário:";
+    campoAniversario.name = "aniversario";
+  }
+}
+
+
+function previousStep() {
+  if (current === "step1b") { showSection("step1"); cameFromGroup = false; return; }
+  if (current === "step1c") { showSection("step1b"); return; }
+  if (current === "step2" && cameFromGroup) { showSection("step1c"); return; }
+  if (current === "step2") { showSection("step1"); return; }
+  if (current === "step3") { showSection("step2"); return; }
+  if (current === "step4") { showSection("step3"); return; }
+}
+
+/* ======= Geração de campos do grupo ======= */
+function gerarCampos() {
+  const qtd = parseInt(document.getElementById("qtdPessoas").value);
+  if (!qtd || qtd < 1) {
+    alert("Por favor, informe uma quantidade válida de pessoas.");
+    return;
+  }
+
+  const campos = document.getElementById("camposPessoas");
+  campos.innerHTML = "";
+  const limit = Math.min(qtd, 20);
+
+  for (let i = 1; i <= limit; i++) {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <label>Nome ${i}:<br>
+        <input type="text" name="nome_pessoa_${i}" required>
+      </label><br>
+      <label>Aniversário ${i}:<br>
+        <input type="date" name="aniversario_pessoa_${i}">
+      </label><br>
+    `;
+    campos.appendChild(div);
+  }
+
+  // 👉 Após gerar os campos, avança para a próxima etapa
+  showSection("step1c");
+}
+
+
+/* ======= Expor funções para botões ======= */
+window.nextStep = nextStep;
+window.previousStep = previousStep;
+window.gerarCampos = gerarCampos;
 </script>
-
-
-
-
 </body>
 </html>

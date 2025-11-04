@@ -39,8 +39,6 @@ form{
   position: relative;
   display: inline-block;
   line-height: 2;
-    padding-right: 2%;
-    padding-left:20%;
     text-align: left;
 
 }
@@ -185,4 +183,26 @@ h1,p{
   color: #b53039; /* mesmo vermelho do hover */
   font-weight: 600;
   transform: translateX(4px);
+}
+
+/* ======== Área rolável apenas dentro do formulário ======== */
+form section {
+  max-height: calc(100vh - 450px); /* limite da área visível (ajusta se precisar) */
+  overflow-y: auto; /* cria rolagem interna se precisar */
+  scrollbar-width: thin; /* rolagem discreta */
+  scrollbar-color: #b53039 transparent; /* cor do scroll */
+  padding-right: 100px; /* evita corte da barra */
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Estilo da barra no Chrome */
+form section::-webkit-scrollbar {
+  width: 6px;
+}
+
+form section::-webkit-scrollbar-thumb {
+  background-color: #b53039;
+  border-radius: 10px;
 }
