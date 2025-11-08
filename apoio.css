@@ -206,3 +206,7 @@ form section::-webkit-scrollbar-thumb {
   background-color: #b53039;
   border-radius: 10px;
 }
+
+html, body {
+  scroll-behavior: auto !important;
+}

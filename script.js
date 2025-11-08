@@ -1,140 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Família Segolin | Formulário de apoio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="apoio.css">
-<link rel="shortcut icon" type="imagex/png" href="./assets/japao.ico">
-</head>
-<body>
-
-<!-- ======== MENU ======== -->
-<div class="menu-toggle" onclick="toggleMenu()">
-  <i class="fa-solid fa-bars"></i>
-</div>
-
-<nav class="menu">
-  <button class="close-btn" onclick="toggleMenu()">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-  <a href="index.html">Início</a>
-  <a href="sobre.html">Quem somos</a>
-  <a href="galeria.html">Galeria</a>
-  <a href="apoio.html" class="active">Apoie-nos 2026</a>
-  <a href="oferta.html">Como ofertar</a>
-</nav>
-
-
-  <div class="sun"></div>
-  <div class="horizon"></div>
-
-  <h1>Formulário de apoio 2026</h1>
-<p>
-  Este formulário é um compromisso de apoio mensal que vale de janeiro de 2026 até dezembro de 2026.
-  Caso, no decorrer do ano, precise encerrar esse compromisso, basta nos comunicar. Não se preocupe nem se envergonhe. Obrigada por nos ajudar nessa caminhada.<br><br>
-  "Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.” - Gálatas 6:2 ARC
-</p>
-
-<form id="contact-form" action="https://formspree.io/f/mzzjapbe" method="POST" novalidate>
-  
-  <!-- ===== Passo 1 ===== -->
-  <section id="step1">
-    <label>Você vai apoiar como:*</label><br>
-    <label><input type="radio" name="tipo" value="fisica" required> Pessoa física</label><br>
-    <label><input type="radio" name="tipo" value="juridica"> Pessoa jurídica</label><br>
-    <label><input type="radio" name="tipo" value="igreja"> Igreja</label><br>
-    <label><input type="radio" name="tipo" value="grupo"> Grupo/Família</label><br>
-    <button type="button" onclick="nextStep()">Próximo</button>
-  </section>
-
-  <section id="step1b" style="display:none;">
-    <label>Quantas pessoas há no grupo/família?</label><br>
-    <input type="number" id="qtdPessoas" min="1" max="20" required><br>
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="button" onclick="gerarCampos()">Próximo</button>
-  </section>
-
-  <section id="step1c" style="display:none;">
-    <div id="camposPessoas"></div>
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="button" onclick="nextStep()">Próximo</button>
-  </section>
-
-  <!-- ===== Passo 2 ===== -->
-  <section id="step2" style="display:none;">
-    <label id="labelNome">Nome e sobrenome:*<br>
-      <input type="text" id="campoNome" name="nome" required>
-    </label><br>
-
-    <label id="labelAniversario">Aniversário:<br>
-      <input type="date" id="campoAniversario" name="aniversario">
-    </label><br>
-
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="button" onclick="nextStep()">Próximo</button>
-  </section>
-
-  <!-- ===== Passo 3 ===== -->
-  <section id="step3" style="display:none;">
-    <label>Whatsapp:<br>
-      <input type="tel" name="whatsapp" required>
-    </label><br>
-    <label> Grupo de informativo:</label><br>
-    <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
-    <label><input type="radio" name="informativo" value="nao"> Não</label><br>
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="button" onclick="nextStep()">Próximo</button>
-  </section>
-
-  <!-- ===== Passo 4 ===== -->
-  <section id="step4" style="display:none;">
-    <label>Valor:
-      <input type="number" name="valor" required>
-    </label>
-    <select id="moeda" name="moeda">
-      <option value="reais">reais</option>
-      <option value="ienes">ienes</option>
-      <option value="dolares">dólares</option>
-      <option value="outro">outro</option>
-    </select><br>
-
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="submit">Enviar</button>
-  </section>
-
-  <!-- Mensagem de sucesso -->
-  <p id="success-message" style="display:none; color:#b53039; margin-top:10px;">
-    Mensagem enviada com sucesso! 🎉
-  </p>
-
-</form>
-
- <div class="footer-space"></div>
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://www.instagram.com/familiasegolin/" target="_blank" class="social-icon">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a href="https://www.youtube.com/@familiasegolin" target="_blank" class="social-icon">
-      <i class="fa-brands fa-youtube"></i>
-    </a>
-        <a href="/whatsapp.html" class="social-icon">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
-
-  <p class="credit">Site desenvolvido com ❤️ por Rebecca Segolin</p>
-</footer>
-
-<script>
-  /* ======== MENU (mantém) ======== */
+/* ======== MENU (mantém) ======== */
 function toggleMenu() {
   const menu = document.querySelector('.menu');
   const toggle = document.querySelector('.menu-toggle');
@@ -302,14 +166,23 @@ document.addEventListener("DOMContentLoaded", () => {
       let bodyText = "";
       try { bodyText = await response.text(); console.log("Corpo da resposta:", bodyText); } catch(e){}
 
-      if (response.ok || response.status === 302) {
-        // sucesso
-        // esconde todas sections e mostra mensagem
-        Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
-        if (successMessage) { successMessage.style.display = "block"; successMessage.scrollIntoView({behavior:"smooth"}); }
-        form.reset();
-        // volta para passo 1 visualmente (opcional): showSection("step1");
-      } else {
+if (response.ok || response.status === 302) {
+  // sucesso
+  Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
+  if (successMessage) {
+    successMessage.style.display = "block";
+  }
+
+  // Impede qualquer scroll automático após reset
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  });
+
+  // Reseta o formulário sem causar foco em nenhum campo
+  form.reset();
+  form.querySelectorAll("input, select, textarea").forEach(el => el.blur());
+}
+ else {
         // status diferente de OK — mostra info para o dev e alerta pro usuário
         console.error("Envio não OK:", response.status, bodyText);
         alert("Erro ao enviar o formulário. Veja o console para detalhes ou tente novamente.");
@@ -326,7 +199,12 @@ window.nextStep = nextStep;
 window.previousStep = previousStep;
 window.gerarCampos = gerarCampos;
 window.atualizarCamposEtapa2 = atualizarCamposEtapa2;
-</script>
 
-</body>
-</html>
+const menu = document.querySelector('.menu');
+const toggle = document.querySelector('.menu-toggle');
+if (menu) {
+  menu.classList.remove('open'); // Fecha o painel lateral (remove translateX(0))
+}
+if (toggle) {
+  toggle.style.display = 'block'; // Garante que o toggle apareça (no mobile)
+}
