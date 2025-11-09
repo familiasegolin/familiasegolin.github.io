@@ -1,4 +1,4 @@
-/* ======== MENU (mantém) ======== */
+  /* ======== MENU (mantém) ======== */
 function toggleMenu() {
   const menu = document.querySelector('.menu');
   const toggle = document.querySelector('.menu-toggle');
@@ -18,7 +18,8 @@ const SECTIONS = {
   step1c: document.getElementById("step1c"),
   step2: document.getElementById("step2"),
   step3: document.getElementById("step3"),
-  step4: document.getElementById("step4")
+  step4: document.getElementById("step4"),
+  step4: document.getElementById("step5")
 };
 let current = "step1";
 let cameFromGroup = false;
@@ -68,6 +69,7 @@ function nextStep() {
   if (current === "step1c") { showSection("step3"); return; }
   if (current === "step2") { showSection("step3"); return; }
   if (current === "step3") { showSection("step4"); return; }
+    if (current === "step4") { showSection("step5"); return; }
 }
 
 function previousStep() {
@@ -77,6 +79,7 @@ function previousStep() {
   if (current === "step2") { showSection("step1"); return; }
   if (current === "step3") { showSection("step2"); return; }
   if (current === "step4") { showSection("step3"); return; }
+      if (current === "step5") { showSection("step4"); return; }
 }
 
 function gerarCampos() {
@@ -166,23 +169,20 @@ document.addEventListener("DOMContentLoaded", () => {
       let bodyText = "";
       try { bodyText = await response.text(); console.log("Corpo da resposta:", bodyText); } catch(e){}
 
-if (response.ok || response.status === 302) {
-  // sucesso
-  Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
-  if (successMessage) {
-    successMessage.style.display = "block";
-  }
+      if (response.ok || response.status === 302) {
+        // sucesso
+        // esconde todas sections e mostra mensagem
+        Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
+        if (successMessage) { successMessage.style.display = "block"; successMessage.scrollIntoView({behavior:"smooth"}); }
+        form.reset();
+        // volta para passo 1 visualmente (opcional): showSection("step1");
+        // Bloqueia qualquer tentativa de scroll automático
+setTimeout(() => {
+  window.scrollTo({ top: 0, behavior: "auto" });
+  document.activeElement?.blur();
+}, 50);
 
-  // Impede qualquer scroll automático após reset
-  requestAnimationFrame(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  });
-
-  // Reseta o formulário sem causar foco em nenhum campo
-  form.reset();
-  form.querySelectorAll("input, select, textarea").forEach(el => el.blur());
-}
- else {
+      } else {
         // status diferente de OK — mostra info para o dev e alerta pro usuário
         console.error("Envio não OK:", response.status, bodyText);
         alert("Erro ao enviar o formulário. Veja o console para detalhes ou tente novamente.");
@@ -199,12 +199,3 @@ window.nextStep = nextStep;
 window.previousStep = previousStep;
 window.gerarCampos = gerarCampos;
 window.atualizarCamposEtapa2 = atualizarCamposEtapa2;
-
-const menu = document.querySelector('.menu');
-const toggle = document.querySelector('.menu-toggle');
-if (menu) {
-  menu.classList.remove('open'); // Fecha o painel lateral (remove translateX(0))
-}
-if (toggle) {
-  toggle.style.display = 'block'; // Garante que o toggle apareça (no mobile)
-}
