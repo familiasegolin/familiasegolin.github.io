@@ -19,7 +19,7 @@ const SECTIONS = {
   step2: document.getElementById("step2"),
   step3: document.getElementById("step3"),
   step4: document.getElementById("step4"),
-  step4: document.getElementById("step5")
+  step5: document.getElementById("step5")
 };
 let current = "step1";
 let cameFromGroup = false;
