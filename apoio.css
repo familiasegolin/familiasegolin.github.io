@@ -1,13 +1,6 @@
 a{   color: white;
 }
 
-h1,p{
-    z-index: 3;
-  position: relative;
-  display: inline-block;
-      padding-left:20%;
-}
-
 /* ======== Neutraliza delays e animações da home ======== */
 .menu a,
 .text-jp span,
@@ -21,39 +14,20 @@ h1,p{
 
 /* ======== Layout geral ======== */
 body {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
   color: white;
-  padding-top: 60px;
   font-family: 'Albert Sans', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
 }
 
-form{
-  z-index: 3;
+.intro {
+    z-index: 3;
   position: relative;
   display: inline-block;
-  line-height: 2;
-    text-align: left;
-
-}
-
-
-/* ======== Footer ======== */
-.footer {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+  padding-left: 300px;
+  padding-right: 2%;
+  text-align: left;
 }
 
 .social-icon {
@@ -71,10 +45,6 @@ form{
 /* ======== Responsivo ======== */
 @media (max-width: 768px) {
   h1 { font-size: 1.4rem; }
-}
-html, body {
-  height: 100%;
-  overflow: hidden; /* remove rolagem */
 }
 
 /* ======== MENU ======== */
@@ -136,7 +106,7 @@ html, body {
   .menu-toggle {
     display: block;
   }
-h1,p{
+.intro{
     z-index: 3;
   position: relative;
   display: inline-block;
@@ -185,28 +155,40 @@ h1,p{
   transform: translateX(4px);
 }
 
-/* ======== Área rolável apenas dentro do formulário ======== */
+/* ======== FORM ======== */
+form {
+  z-index: 3;
+  position: relative;
+  display: block; /* era inline-block, isso quebrava o alinhamento */
+  line-height: 2;
+  text-align: left;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto; /* centraliza igual ao sobre */
+  padding-left: 300px;
+  padding-right: 2%;
+}
+
+/* ======== SEÇÕES ======== */
 form section {
-  max-height: calc(100vh - 450px); /* limite da área visível (ajusta se precisar) */
-  overflow-y: auto; /* cria rolagem interna se precisar */
-  scrollbar-width: thin; /* rolagem discreta */
-  scrollbar-color: #b53039 transparent; /* cor do scroll */
-  padding-right: 100px; /* evita corte da barra */
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  max-height: none; /* remova o limite de altura */
 }
 
-/* Estilo da barra no Chrome */
-form section::-webkit-scrollbar {
-  width: 6px;
+/* ======== RESPONSIVO ======== */
+@media (max-width: 900px) {
+  form {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
-form section::-webkit-scrollbar-thumb {
-  background-color: #b53039;
-  border-radius: 10px;
+h1{
+  text-align: center;
 }
 
-html, body {
-  scroll-behavior: auto !important;
+* {
+  box-sizing: border-box;
 }

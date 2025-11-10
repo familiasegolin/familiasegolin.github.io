@@ -14,17 +14,11 @@ a{   color: white;
 
 /* ======== Layout geral ======== */
 body {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
   color: white;
-  padding-top: 60px;
   font-family: 'Albert Sans', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
 }
 
 .content{
@@ -33,10 +27,6 @@ body {
   display: inline-block;
   line-height: 2;
     padding-right: 2%;
-   /* 🔹 Scroll interno elegante */
-  overflow-y: auto;           /* ativa rolagem vertical */
-  scrollbar-width: thin;      /* Firefox */
-  scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
 }
 
 ul{
@@ -44,17 +34,6 @@ ul{
   list-style-type: square;
 }
 
-/* ======== Footer ======== */
-.footer {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
 
 .social-icon {
   color: #ffffff;
@@ -71,11 +50,6 @@ ul{
 /* ======== Responsivo ======== */
 @media (max-width: 768px) {
   h1 { font-size: 1.4rem; }
-}
-
-html, body {
-  height: 100%;
-  overflow: hidden; /* remove rolagem */
 }
 
 /* ======== MENU ======== */
