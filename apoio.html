@@ -87,12 +87,13 @@
 
   <!-- ===== Passo 3 ===== -->
   <section id="step3" style="display:none;">
-    <label>Whatsapp:*<br>
+    <label>Whatsapp:*
       <input type="tel" name="whatsapp" required>
     </label><br>
     <label> Grupo de informativo:*</label><br>
-    <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
+     <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
     <label><input type="radio" name="informativo" value="nao"> Não</label><br>
+    <div style="font-size: 0.75rem">O grupo facilita nossa comunicação com vocês.<br></div>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
   </section>
@@ -110,10 +111,10 @@
       <option value="outro">outro</option>
     </select><br>
         <label>Caso esqueça, receber lembrete da oferta  via whatsapp dia:*</label><br>
-    <label><input type="radio" name="tipo" value="fisica" required> 05</label>
-    <label><input type="radio" name="tipo" value="juridica"> 15</label>
-    <label><input type="radio" name="tipo" value="igreja"> 25</label>
-    <label><input type="radio" name="tipo" value="grupo"> Não receber</label><br>
+    <label><input type="radio" name="lembrete" value="05" required> 05</label>
+    <label><input type="radio" name="lembrete" value="15"> 15</label>
+    <label><input type="radio" name="lembrete" value="25"> 25</label>
+    <label><input type="radio" name="lembrete" value="não"> Não receber</label><br>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
   </section>
@@ -129,11 +130,7 @@
   </section>
 
   <!-- Mensagem de sucesso -->
-  <p id="success-message" style="display:none; color: #b53039; text-shadow:
-    -1px -1px 0 #233a63,
-     1px -1px 0 #233a63,
-    -1px  1px 0 #233a63,
-     1px  1px 0 #233a63;">
+  <p id="success-message" style="display:none">
     Formulário enviado com sucesso! 🎉 Agradecemos seu apoio!<br>Entraremos em contato
     <!--<br>Veja mais:<br>
     <a href="https://docs.google.com/spreadsheets/d/1n_JPwwq_5Q8L7VKNSJf4jQRtSBOOtEKSFpbkZOQoytQ/edit?usp=sharing">- Como programar o PIX recorrente<br></a>
