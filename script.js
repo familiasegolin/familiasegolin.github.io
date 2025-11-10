@@ -129,69 +129,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const successMessage = document.getElementById("success-message");
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    // 1) validação: pega somente inputs required das seções *visíveis* (passo atual ou step1c etc.)
-    // também inclui quaisquer inputs gerados no DOM (eles são filhos de step1c)
-    const visibleSections = Array.from(form.querySelectorAll("section")).filter(s => {
-      // consider inline style display or computed style
-      return s.offsetParent !== null; // elemento visível na render tree
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const prevBtns = form.querySelectorAll('button[type="button"]');
+  
+  // Desativa botões para evitar múltiplos envios
+  submitBtn.disabled = true;
+  prevBtns.forEach(btn => btn.disabled = true);
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = "Enviando...";
+
+  // ===== Validação =====
+  const visibleSections = Array.from(form.querySelectorAll("section")).filter(s => s.offsetParent !== null);
+  const requiredVisible = visibleSections.flatMap(s => Array.from(s.querySelectorAll("[required]")));
+  for (const field of requiredVisible) {
+    if (field.type === "radio") {
+      const group = form.querySelectorAll(`input[name='${field.name}']`);
+      const checked = Array.from(group).some(r => r.checked);
+      if (!checked) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        // reativa botões
+        submitBtn.disabled = false;
+        prevBtns.forEach(btn => btn.disabled = false);
+        submitBtn.textContent = originalText;
+        return;
+      }
+    } else {
+      if (!String(field.value || "").trim()) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        field.focus();
+        // reativa botões
+        submitBtn.disabled = false;
+        prevBtns.forEach(btn => btn.disabled = false);
+        submitBtn.textContent = originalText;
+        return;
+      }
+    }
+  }
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method || "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
     });
 
-    const requiredVisible = visibleSections.flatMap(s => Array.from(s.querySelectorAll("[required]")));
-    for (const field of requiredVisible) {
-      if (field.type === "radio") {
-        const group = form.querySelectorAll(`input[name='${field.name}']`);
-        const checked = Array.from(group).some(r => r.checked);
-        if (!checked) { alert("Por favor, preencha todos os campos obrigatórios."); return; }
-      } else {
-        if (!String(field.value || "").trim()) { alert("Por favor, preencha todos os campos obrigatórios."); field.focus(); return; }
-      }
+    if (response.ok || response.status === 302) {
+      Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
+      successMessage.style.display = "block";
+      successMessage.scrollIntoView({ behavior: "smooth" });
+      form.reset();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+        document.activeElement?.blur();
+      }, 50);
+    } else {
+      alert("Erro ao enviar o formulário. Tente novamente em alguns instantes.");
     }
 
-    // 2) monta FormData com TODOS os campos do form (ok) — Formspree espera os campos do form
-    const formData = new FormData(form);
+  } catch (err) {
+    console.error("Erro no envio:", err);
+    alert("Erro de conexão. Verifique sua internet e tente novamente.");
+  } finally {
+    // Reativa os botões (mesmo em caso de erro)
+    submitBtn.disabled = false;
+    prevBtns.forEach(btn => btn.disabled = false);
+    submitBtn.textContent = originalText;
+  }
+});
 
-    // debug (remova depois se quiser)
-    console.log("Enviando FormData:", Array.from(formData.entries()));
-
-    // 3) envia com fetch e trata resposta
-    try {
-      const response = await fetch(form.action, {
-        method: form.method || "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-
-      console.log("Resposta do servidor:", response.status, response.statusText);
-      // Tenta ler o corpo pra debugar (útil quando Formspree retorna erros)
-      let bodyText = "";
-      try { bodyText = await response.text(); console.log("Corpo da resposta:", bodyText); } catch(e){}
-
-      if (response.ok || response.status === 302) {
-        // sucesso
-        // esconde todas sections e mostra mensagem
-        Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
-        if (successMessage) { successMessage.style.display = "block"; successMessage.scrollIntoView({behavior:"smooth"}); }
-        form.reset();
-        // volta para passo 1 visualmente (opcional): showSection("step1");
-        // Bloqueia qualquer tentativa de scroll automático
-setTimeout(() => {
-  window.scrollTo({ top: 0, behavior: "auto" });
-  document.activeElement?.blur();
-}, 50);
-
-      } else {
-        // status diferente de OK — mostra info para o dev e alerta pro usuário
-        console.error("Envio não OK:", response.status, bodyText);
-        alert("Erro ao enviar o formulário. Veja o console para detalhes ou tente novamente.");
-      }
-    } catch (err) {
-      console.error("Erro no fetch:", err);
-      alert("Erro de conexão. Verifique sua internet e tente novamente.");
-    }
-  });
 });
 
 /* expõe funções para uso inline nos botões */
