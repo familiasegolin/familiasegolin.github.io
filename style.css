@@ -260,4 +260,7 @@ html, body {
     h1{
       padding-left: 10%;
     }
+      html {
+    scroll-behavior: auto; /* Desabilita smooth scroll em móveis */
+  }
   }
