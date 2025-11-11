@@ -57,6 +57,7 @@
     <label><input type="radio" name="tipo" value="igreja"> Igreja</label><br>
     <label><input type="radio" name="tipo" value="grupo"> Grupo/Família</label><br>
     <button type="button" onclick="nextStep()">Próximo</button>
+  <br>Etapa 1 de 5
   </section>
 
   <section id="step1b" style="display:none;">
@@ -64,12 +65,14 @@
     <input type="number" id="qtdPessoas" min="1" max="20" required><br>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="gerarCampos()">Próximo</button>
+      <br>Etapa 1.5 de 5
   </section>
 
   <section id="step1c" style="display:none;">
     <div id="camposPessoas"></div>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
+      <br>Etapa 2 de 5
   </section>
 
   <!-- ===== Passo 2 ===== -->
@@ -84,6 +87,7 @@
 
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
+  <br>Etapa 2 de 5
   </section>
 
   <!-- ===== Passo 3 ===== -->
@@ -96,6 +100,7 @@
     <label><input type="radio" name="informativo" value="nao"> Não</label><br>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
+  <br>Etapa 3 de 5
   </section>
 
   <!-- ===== Passo 4 ===== -->
@@ -117,6 +122,7 @@
     <label><input type="radio" name="lembrete" value="não"> Não receber</label><br>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="button" onclick="nextStep()">Próximo</button>
+  <br>Etapa 4 de 5
   </section>
 
   <!-- ===== Passo 5 ===== -->
@@ -127,6 +133,7 @@
   </label>
     <button type="button" onclick="previousStep()">Anterior</button>
     <button type="submit">Enviar</button>
+  <br>Etapa 5 de 5
   </section>
 
   <!-- Mensagem de sucesso -->
