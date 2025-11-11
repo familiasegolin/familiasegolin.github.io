@@ -243,7 +243,6 @@ html {
 
 html, body {
   height: 100%;
-  -webkit-overflow-scrolling: touch; /* Melhora scroll em iOS */
 }
 
 /* Responsivo */
@@ -261,7 +260,4 @@ html, body {
     h1{
       padding-left: 10%;
     }
-      html {
-    scroll-behavior: auto; /* Desabilita smooth scroll em móveis */
-  }
   }
