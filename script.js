@@ -57,7 +57,8 @@ function nextStep() {
   if (current === "step3") {
     const whatsappInput = document.getElementById("whatsapp");
     const digits = whatsappInput.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    if (digits.length < 11) {
+    const hasLetters = /[a-zA-Z]/.test(whatsappInput.value); // Verifica se há letras
+    if (digits.length < 11 || hasLetters) {
       alert("Telefone incorreto. Certifique-se de incluir o DDD regional.");
       whatsappInput.focus();
       return;

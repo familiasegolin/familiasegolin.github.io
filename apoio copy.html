@@ -46,72 +46,15 @@
 </div>
 
 <form id="contact-form" action="https://formspree.io/f/mkgkwvbv" method="POST" novalidate>
-
-<!-- ===== Passo 3 ===== -->
-<section id="step1">
-  <label>Whatsapp:*</label>
-  <input id="whatsapp" type="tel" name="whatsapp" required>
-<br>
-  <label>Grupo de informativo:*</label><br>
-  <div style="font-size: 0.75rem">
-    O grupo facilita nossa comunicação com vocês.<br>
-  </div>
-  <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
-  <label><input type="radio" name="informativo" value="nao"> Não</label><br>
-
-  <button type="button" onclick="previousStep()">Anterior</button>
-  <button type="button" onclick="nextStep()">Próximo</button>
-  <br>
-  <div style="padding-left: 10%;">Etapa 3 de 5</div>
-
-  <!-- Importa o CSS e JS da biblioteca intl-tel-input -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css" />
-  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const input = document.querySelector("#whatsapp");
-      window.intlTelInput(input, {
-        initialCountry: "br", // país padrão (Brasil)
-        preferredCountries: ["br", "us", "jp", "gb", "fr"], // os mais usados
-        nationalMode: false, // usa o formato internacional (+55...)
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
-      });
-    });
-  </script>
-
-  <style>
-    /* Ajustes para combinar com seu design */
-    .iti {
-      width: 80%;
-    }
-    .iti__country-list {
-      background-color: rgba(31,47,77,0.98);
-      color: #fff;
-      font-family: 'Albert Sans', sans-serif;
-      
-    }
-    .iti__selected-flag {
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 8px 0 0 8px;
-    }
-    #whatsapp {
-      background-color: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
-      font-family: 'Albert Sans', sans-serif;
-      font-size: 1rem;
-      padding: 10px 14px;
-      border-radius: 8px;
-      width: 100%;
-      box-sizing: border-box;
-      padding-left: 50px
-    }
-  </style>
-</section>
-
-</script>
-
+     <section id="step1" style="display:none;">
+ <label>
+    Mensagem/Observação:<br>
+    <textarea name="message" style="width: 100%; height: 100px;"></textarea><br>
+  </label>
+    <button type="button" onclick="previousStep()">Anterior</button>
+    <button type="submit">Enviar</button>
+  <br><div style="padding-left: 10%;">Etapa 5 de 5</div>
+  </section>
 
 </form>
 
