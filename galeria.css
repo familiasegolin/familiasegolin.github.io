@@ -25,13 +25,13 @@ body {
   z-index: 3;
   position: relative;
   display: inline-block;
-  line-height: 2;
-    padding-right: 2%;
+    padding-right: 5%;
 }
 
 ul{
   text-align: left;
   list-style-type: square;
+    line-height: 2;
 }
 
 
