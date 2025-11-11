@@ -139,19 +139,7 @@ main {
 }
 
 
-  /* Responsivo */
-  @media (max-width: 768px) {
-    .sun {
-      width: 180px;
-      height: 180px;
-      bottom: 20%;
-    }
-    .text-jp {
-      font-size: 1.5rem;
-      right: 6%;
-      top: 12%;
-    }
-  }
+
 
 /* Footer */
 .footer {
@@ -256,3 +244,20 @@ html {
 html, body {
   height: 100%;
 }
+
+/* Responsivo */
+  @media (max-width: 768px) {
+    .sun {
+      width: 180px;
+      height: 180px;
+      bottom: 20%;
+    }
+    .text-jp {
+      font-size: 1.5rem;
+      right: 6%;
+      top: 12%;
+    }
+    h1{
+      padding-left: 10%;
+    }
+  }
