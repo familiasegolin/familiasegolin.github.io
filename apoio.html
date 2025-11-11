@@ -93,7 +93,7 @@
 <!-- ===== Passo 3 ===== -->
 <section id="step3" style="display:none;">
   <label>Whatsapp:*</label>
-  <input id="whatsapp" type="tel" name="whatsapp" placeholder="(DDD) 99999-9999" required>
+  <input id="whatsapp" type="tel" name="whatsapp" placeholder="(XX) 99999-9999" maxlength="14" required>
   <br>
   <label>Grupo de informativo:*</label><br>
   <div style="font-size: 0.75rem">
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updatePlaceholder() {
     const countryData = iti.getSelectedCountryData();
     if (countryData.iso2 === "br") {
-      input.placeholder = "(DDD) 99999-9999";
+      input.placeholder = "(XX) 99999-9999";
       
     } else {
       input.placeholder = "Enter phone number";

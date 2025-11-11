@@ -53,6 +53,17 @@ function nextStep() {
     return;
   }
 
+  // Validação específica para step3: verificar se o WhatsApp tem pelo menos 11 dígitos
+  if (current === "step3") {
+    const whatsappInput = document.getElementById("whatsapp");
+    const digits = whatsappInput.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    if (digits.length < 11) {
+      alert("Telefone incorreto. Certifique-se de incluir o DDD regional.");
+      whatsappInput.focus();
+      return;
+    }
+  }
+
   if (current === "step1") {
     const tipo = document.querySelector('input[name="tipo"]:checked')?.value;
     if (tipo === "grupo") { cameFromGroup = true; showSection("step1b"); return; }
