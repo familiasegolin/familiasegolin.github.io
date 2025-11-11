@@ -90,18 +90,95 @@
   <br><div style="padding-left: 10%;">Etapa 2 de 5</div>
   </section>
 
-  <!-- ===== Passo 3 ===== -->
-  <section id="step3" style="display:none;">
-    <label>Whatsapp:*
-      <input type="tel" name="whatsapp" required>
-    </label><br>
-    <label> Grupo de informativo:*</label><br> <div style="font-size: 0.75rem">O grupo facilita nossa comunicação com vocês.<br></div>
-     <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
-    <label><input type="radio" name="informativo" value="nao"> Não</label><br>
-    <button type="button" onclick="previousStep()">Anterior</button>
-    <button type="button" onclick="nextStep()">Próximo</button>
-  <br><div style="padding-left: 10%;">Etapa 3 de 5</div>
-  </section>
+<!-- ===== Passo 3 ===== -->
+<section id="step3" style="display:none;">
+  <label>Whatsapp:*</label>
+  <input id="whatsapp" type="tel" name="whatsapp" placeholder="(DDD) 99999-9999" required>
+  <br>
+  <label>Grupo de informativo:*</label><br>
+  <div style="font-size: 0.75rem">
+    O grupo facilita nossa comunicação com vocês.<br>
+  </div>
+  <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
+  <label><input type="radio" name="informativo" value="nao"> Não</label><br>
+
+  <button type="button" onclick="previousStep()">Anterior</button>
+  <button type="button" onclick="nextStep()">Próximo</button>
+  <br>
+  <div style="padding-left: 10%;">Etapa 3 de 5</div>
+
+  <!-- Importa o CSS e JS da biblioteca intl-tel-input -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css" />
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const input = document.querySelector("#whatsapp");
+
+  const iti = window.intlTelInput(input, {
+    initialCountry: "br",
+    preferredCountries: ["br", "us", "jp", "gb", "fr"],
+    nationalMode: false,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+  });
+
+  // Função que atualiza o placeholder conforme o país
+  function updatePlaceholder() {
+    const countryData = iti.getSelectedCountryData();
+    if (countryData.iso2 === "br") {
+      input.placeholder = "(DDD) 99999-9999";
+      
+    } else {
+      input.placeholder = "Enter phone number";
+    }
+  }
+
+  // Atualiza ao mudar o país
+  input.addEventListener("countrychange", updatePlaceholder);
+
+  // ✅ Aguarda o utils.js ser carregado, então atualiza o placeholder
+  input.addEventListener("load", updatePlaceholder); // segurança extra
+  document.addEventListener("utilsloaded", updatePlaceholder);
+
+  // Garante envio com DDI correto
+  const form = input.closest("form");
+  if (form) {
+    form.addEventListener("submit", function() {
+      input.value = iti.getNumber(); // envia com +DDI
+    });
+  }
+});
+
+  </script>
+
+  <style>
+    .iti { width: 80%; }
+    .iti__country-list {
+      background-color: rgba(31,47,77,0.98);
+      color: #fff;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 0.75rem;
+    }
+    .iti__selected-flag {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px 0 0 8px;
+    }
+    #whatsapp {
+      background-color: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 1rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: 50px;
+    }
+  </style>
+</section>
+
+
 
   <!-- ===== Passo 4 ===== -->
   <section id="step4" style="display:none;">
@@ -143,7 +220,7 @@
     <a href="https://docs.google.com/spreadsheets/d/1n_JPwwq_5Q8L7VKNSJf4jQRtSBOOtEKSFpbkZOQoytQ/edit?usp=sharing">- Como programar o PIX recorrente<br></a>
     <a href="https://chat.whatsapp.com/BfkTFQK31rU9ThG0Ek1Ogu">- Entre no grupo de informativos aqui<br></a>
    <a href="https://www.canva.com/design/DAG4H-WB-zk/NNCWiQqqaeNLGOCuMBjpwg/view?utm_content=DAG4H-WB-zk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6f0e63bbc9">- Quantos apoiadores confirmados até agora<br></a>
-    <a href="https://docs.google.com/spreadsheets/d/1oVxlsor5i3_yR-UhG_0k73G8j2zl3qJjhadGAockF7g/edit?usp=sharing">- Orçamento familiar 2026</a>
+    <!--<a href="https://docs.google.com/spreadsheets/d/1oVxlsor5i3_yR-UhG_0k73G8j2zl3qJjhadGAockF7g/edit?usp=sharing">- Orçamento familiar 2026</a>-->
   
   </p></div>
 

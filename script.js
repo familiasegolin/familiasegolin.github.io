@@ -209,3 +209,4 @@ window.nextStep = nextStep;
 window.previousStep = previousStep;
 window.gerarCampos = gerarCampos;
 window.atualizarCamposEtapa2 = atualizarCamposEtapa2;
+

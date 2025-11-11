@@ -47,16 +47,71 @@
 
 <form id="contact-form" action="https://formspree.io/f/mkgkwvbv" method="POST" novalidate>
 
-  <!-- Mensagem de sucesso -->
-  <div id="success-message" style="text-align: center;">
-    Formulário enviado com sucesso! 🎉 Agradecemos seu apoio! Entraremos em contato!
-    <p style="text-align: left; font-size:0.8rem;"><br>Veja mais:<br>
-    <a href="https://docs.google.com/spreadsheets/d/1n_JPwwq_5Q8L7VKNSJf4jQRtSBOOtEKSFpbkZOQoytQ/edit?usp=sharing">- Como programar o PIX recorrente<br></a>
-    <a href="https://chat.whatsapp.com/BfkTFQK31rU9ThG0Ek1Ogu">- Entre no grupo de informativos aqui<br></a>
-   <a href="https://www.canva.com/design/DAG4H-WB-zk/NNCWiQqqaeNLGOCuMBjpwg/view?utm_content=DAG4H-WB-zk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6f0e63bbc9">- Quantos apoiadores confirmados temos até agora<br></a>
-    <a href="https://docs.google.com/spreadsheets/d/1oVxlsor5i3_yR-UhG_0k73G8j2zl3qJjhadGAockF7g/edit?usp=sharing">- Orçamento familiar 2026</a>
-  
-  </p></div>
+<!-- ===== Passo 3 ===== -->
+<section id="step1">
+  <label>Whatsapp:*</label>
+  <input id="whatsapp" type="tel" name="whatsapp" required>
+<br>
+  <label>Grupo de informativo:*</label><br>
+  <div style="font-size: 0.75rem">
+    O grupo facilita nossa comunicação com vocês.<br>
+  </div>
+  <label><input type="radio" name="informativo" value="sim" required> Sim</label><br>
+  <label><input type="radio" name="informativo" value="nao"> Não</label><br>
+
+  <button type="button" onclick="previousStep()">Anterior</button>
+  <button type="button" onclick="nextStep()">Próximo</button>
+  <br>
+  <div style="padding-left: 10%;">Etapa 3 de 5</div>
+
+  <!-- Importa o CSS e JS da biblioteca intl-tel-input -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css" />
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const input = document.querySelector("#whatsapp");
+      window.intlTelInput(input, {
+        initialCountry: "br", // país padrão (Brasil)
+        preferredCountries: ["br", "us", "jp", "gb", "fr"], // os mais usados
+        nationalMode: false, // usa o formato internacional (+55...)
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+      });
+    });
+  </script>
+
+  <style>
+    /* Ajustes para combinar com seu design */
+    .iti {
+      width: 80%;
+    }
+    .iti__country-list {
+      background-color: rgba(31,47,77,0.98);
+      color: #fff;
+      font-family: 'Albert Sans', sans-serif;
+      
+    }
+    .iti__selected-flag {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px 0 0 8px;
+    }
+    #whatsapp {
+      background-color: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 1rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: 50px
+    }
+  </style>
+</section>
+
+</script>
+
 
 </form>
 
