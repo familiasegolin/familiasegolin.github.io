@@ -27,7 +27,7 @@ body {
   display: inline-block;
   padding-left: 300px;
   padding-right: 2%;
-  text-align: left;
+  text-align: center;
 }
 
 .social-icon {
@@ -99,53 +99,6 @@ body {
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
-}
-
-/* ======== Modo responsivo ======== */
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
-  }
-.intro{
-    z-index: 3;
-  position: relative;
-  display: inline-block;
-      padding-left:5%;
-      padding-right:5%;
-}
-  /* Esconde o menu padrão e cria o painel lateral */
-  .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(35, 58, 99, 0.97);
-    height: 100%;
-    width: 70%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 40px;
-    gap: 25px;
-    transform: translateX(-100%);
-    transition: transform 0.4s ease;
-  }
-
-  .menu.open {
-    transform: translateX(0);
-  }
-
-  .menu a {
-    font-size: 1.4rem;
-  }
-
-  .menu.open .close-btn {
-    display: block;
-  }
-
-  /* Esconde o menu hamburguer quando o menu estiver aberto */
-  .menu.open ~ .menu-toggle {
-    display: none;
-  }
 }
 
 /* ======== Página ativa ======== */
@@ -227,7 +180,6 @@ h1{
   line-height: 1.5;
   animation: fadeIn 0.4s ease;
   z-index: 3;
-
 }
 
 /* 🔹 Personaliza a barra de rolagem (Chrome, Edge, Safari) */
@@ -264,3 +216,51 @@ h1{
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ======== Modo responsivo ======== */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+.intro{
+    z-index: 3;
+  position: relative;
+  display: inline-block;
+      padding-left:5%;
+      padding-right:5%;
+}
+  /* Esconde o menu padrão e cria o painel lateral */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(35, 58, 99, 0.97);
+    height: 100%;
+    width: 70%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 40px;
+    gap: 25px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+
+  .menu a {
+    font-size: 1.4rem;
+  }
+
+  .menu.open .close-btn {
+    display: block;
+  }
+
+  /* Esconde o menu hamburguer quando o menu estiver aberto */
+  .menu.open ~ .menu-toggle {
+    display: none;
+  }
+}
+
