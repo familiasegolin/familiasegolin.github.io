@@ -192,7 +192,8 @@ form.addEventListener("submit", async (event) => {
 
     if (response.ok || response.status === 302) {
       Object.values(SECTIONS).forEach(s => s && (s.style.display = "none"));
-      successMessage.style.display = "block";
+        showSuccessAndLinks();
+  form.reset();
       successMessage.scrollIntoView({ behavior: "smooth" });
       form.reset();
       setTimeout(() => {
@@ -215,6 +216,68 @@ form.addEventListener("submit", async (event) => {
 });
 
 });
+
+// ====== construção dinâmica dos links da mensagem de sucesso ======
+function buildSuccessMessageHtml(moeda) {
+  // texto fixo de cabeçalho
+  let html = `
+    Formulário enviado com sucesso! 🎉 Agradecemos seu apoio! Entraremos em contato!
+    <p style="text-align: left; font-size:0.8rem;"><br>Veja mais:<br>
+  `;
+
+  // link PIX — só se moeda for real
+  if (moeda === "reais") {
+    html += `<a href="https://docs.google.com/spreadsheets/d/1n_JPwwq_5Q8L7VKNSJf4jQRtSBOOtEKSFpbkZOQoytQ/edit?usp=sharing" target="_blank" rel="noopener">- Como programar o PIX recorrente</a><br>`;
+  }
+
+  // link do grupo — sempre exibido
+  html += `<a href="https://chat.whatsapp.com/BfkTFQK31rU9ThG0Ek1Ogu" target="_blank" rel="noopener">- Entre no grupo de informativos aqui</a><br>`;
+
+  // link "Quantos apoiadores" — sempre exibido (ajuste se quiser condicional)
+  html += `<a href="https://www.canva.com/design/DAG4H-WB-zk/NNCWiQqqaeNLGOCuMBjpwg/view?utm_content=DAG4H-WB-zk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6f0e63bbc9" target="_blank" rel="noopener">- Quantos apoiadores confirmados até agora</a><br>`;
+
+  // link orçamento — aparece para todos exceto quando moeda === 'iene'
+  if (moeda !== "ienes") {
+    html += `<a href="https://docs.google.com/spreadsheets/d/1oVxlsor5i3_yR-UhG_0k73G8j2zl3qJjhadGAockF7g/edit?usp=sharing" target="_blank" rel="noopener">- Orçamento familiar 2026</a>`;
+  }
+
+  html += `</p>`;
+  return html;
+}
+
+function updateSuccessMessage() {
+  const sm = document.getElementById("success-message");
+  const moedaSelect = document.getElementById("moeda");
+  if (!sm) return;
+  const moeda = moedaSelect ? moedaSelect.value : "";
+  sm.innerHTML = buildSuccessMessageHtml(moeda);
+}
+
+/* Hook: chama quando o success-message for mostrado no submit */
+function showSuccessAndLinks() {
+  const sm = document.getElementById("success-message");
+  if (!sm) return;
+  // monta o HTML correto
+  updateSuccessMessage();
+  // mostra a mensagem
+  sm.style.display = "block";
+  // opcional: rolar para topo sem esconder menu (se preferir não rolar, comente a linha abaixo)
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+/* Observador: se o usuário alterar a moeda enquanto a mensagem já estiver visível,
+   atualizamos os links dinamicamente */
+document.addEventListener("DOMContentLoaded", () => {
+  const moedaSelect = document.getElementById("moeda");
+  const sm = document.getElementById("success-message");
+  if (moedaSelect) {
+    moedaSelect.addEventListener("change", () => {
+      // só atualiza visualmente se a mensagem de sucesso já estiver visível
+      if (sm && sm.style.display !== "none") updateSuccessMessage();
+    });
+  }
+});
+
 
 /* expõe funções para uso inline nos botões */
 window.nextStep = nextStep;
