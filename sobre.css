@@ -154,18 +154,19 @@ body {
 .conteudo-secao {
  text-align: left;
   width: 90%;
+  max-width: 600px;
   line-height: 1.5;
   animation: fadeIn 0.4s ease;
   z-index: 3;
   padding-left: 180px;
   padding-right: 2%;
-  margin-top: -5%;
+  margin-top: -2%;
 }
 
 
 .conteudo-secao h2 {
   color: #b53039;
-  padding-left: 15px;
+  padding-left: 10px;
   margin-bottom: 15px;
 }
 
