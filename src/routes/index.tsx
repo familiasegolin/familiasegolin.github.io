@@ -10,7 +10,7 @@ import { PageLayout, WhatsAppIcon, InstagramSvg, YoutubeSvg, Mail } from "@/comp
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Família Segolin — Diário da Nossa Jornada no Japão" },
+      { title: "Família Segolin" },
       {
         name: "description",
         content:

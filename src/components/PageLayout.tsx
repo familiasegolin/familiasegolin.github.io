@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logoFish from "@/assets/logo.svg";
+import logoJapa from "@/assets/logo.svg";
 import { Link, useRouterState } from "@tanstack/react-router";
 export { Mail } from "lucide-react";
 
@@ -50,7 +50,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
           <div className="hidden lg:grid grid-cols-[180px_1fr_220px]">
             <div className="flex items-center justify-center news-border-r p-4">
               <img
-                src={logoFish}
+                src={logoJapa}
                 alt="Família Segolin logo"
                 className="h-20 w-auto object-contain"
               />
@@ -69,7 +69,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
               </p>
             </div>
             <div className="text-center news-border-l p-4 flex flex-col justify-center font-sans-news text-[11px] tracking-[0.2em] uppercase">
-              <p className="font-bold">Saku City</p>
+              <p className="font-bold">Saku</p>
               <p className="mb-3">Nagano, Japão</p>
               <p>08 de maio, 2025</p>
               <p>Edição #01</p>
@@ -80,7 +80,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
           <div className="lg:hidden grid grid-cols-[56px_1fr_56px] items-stretch">
             <div className="flex items-center justify-center news-border-r p-3">
               <img
-                src={logoFish}
+                src={logoJapa}
                 alt="Família Segolin logo"
                 className="h-10 w-auto object-contain"
               />
