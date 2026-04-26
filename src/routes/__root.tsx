@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import faviconUrl from "../assets/japao.ico?url";
 
 function NotFoundComponent() {
   return (
@@ -29,24 +30,17 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Pixel Perfect Portal converts images into responsive desktop websites, replicating design elements precisely." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Pixel Perfect Portal converts images into responsive desktop websites, replicating design elements precisely." },
+      { title: "Família Segolin" },
+      {
+        name: "description",
+        content:
+          "Diário da Família Segolin: nossa vida em Saku, Nagano. Histórias, viagens e descobertas no Japão desde 2023.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Pixel Perfect Portal converts images into responsive desktop websites, replicating design elements precisely." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8bf36ee3-7710-484a-8577-2eb8537cf929/id-preview-81f21877--6c3358b3-cbd4-4eba-8dde-f78bfd27a54f.lovable.app-1777110814158.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8bf36ee3-7710-484a-8577-2eb8537cf929/id-preview-81f21877--6c3358b3-cbd4-4eba-8dde-f78bfd27a54f.lovable.app-1777110814158.png" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: faviconUrl, type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -56,7 +50,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
