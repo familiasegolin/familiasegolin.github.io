@@ -30,11 +30,11 @@ jobs:
           <head>
             <meta charset="utf-8" />
             <title>Família Segolin</title>
-            <meta http-equiv="refresh" content="0; url=https://familiasegolin.familiasegolin.workers.dev/" />
-            <link rel="canonical" href="https://familiasegolin.familiasegolin.workers.dev/" />
+            <meta http-equiv="refresh" content="0; url=https://familiasegolin.com/" />
+            <link rel="canonical" href="https://familiasegolin.com/" />
           </head>
           <body>
-            <p>Redirecionando... <a href="https://familiasegolin.familiasegolin.workers.dev/">Clique aqui</a> se não for redirecionado.</p>
+            <p>Redirecionando... <a href="https://familiasegolin.com/">Clique aqui</a> se não for redirecionado.</p>
           </body>
           </html>
           EOF
