@@ -109,7 +109,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
 
           {/* Mobile date strip */}
           <div className="lg:hidden news-border-t text-center py-2 font-sans-news text-[9px] tracking-[0.2em] uppercase">
-            <span className="font-bold">Saku City</span>
+            <span className="font-bold">Saku</span>
             {" · "}Nagano, Japão{" · "}08 de maio, 2025{" · "}Edição #01
           </div>
 
