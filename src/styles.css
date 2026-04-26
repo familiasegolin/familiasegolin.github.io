@@ -1,0 +1,116 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  /* Vintage newspaper palette */
+  --paper: oklch(0.96 0.012 85);
+  --ink: oklch(0.18 0.008 60);
+
+  --background: oklch(0.96 0.012 85);
+  --foreground: oklch(0.18 0.008 60);
+  --card: oklch(0.96 0.012 85);
+  --card-foreground: oklch(0.18 0.008 60);
+  --popover: oklch(0.96 0.012 85);
+  --popover-foreground: oklch(0.18 0.008 60);
+  --primary: oklch(0.18 0.008 60);
+  --primary-foreground: oklch(0.96 0.012 85);
+  --secondary: oklch(0.92 0.012 85);
+  --secondary-foreground: oklch(0.18 0.008 60);
+  --muted: oklch(0.92 0.012 85);
+  --muted-foreground: oklch(0.45 0.012 60);
+  --accent: oklch(0.92 0.012 85);
+  --accent-foreground: oklch(0.18 0.008 60);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.96 0.012 85);
+  --border: oklch(0.18 0.008 60);
+  --input: oklch(0.18 0.008 60);
+  --ring: oklch(0.18 0.008 60);
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFkD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-serif);
+  }
+  .font-sans-news {
+    font-family: var(--font-sans);
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .news-border {
+    border: 1px solid var(--ink);
+  }
+  .news-border-t { border-top: 1px solid var(--ink); }
+  .news-border-b { border-bottom: 1px solid var(--ink); }
+  .news-border-l { border-left: 1px solid var(--ink); }
+  .news-border-r { border-right: 1px solid var(--ink); }
+  .news-border-double {
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+  }
+  .news-img {
+    filter: grayscale(1) contrast(1.05);
+  }
+}
