@@ -14,9 +14,9 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Diário da Família Segolin: nossa vida em Saku, Nagano. Histórias, viagens e descobertas no Japão desde 2023.",
+          "Família Segolin é uma família de missionários vivendo no Japão. Compartilhamos nossa jornada de fé, descobertas e desafios nessa terra de cultura rica e tradições milenares.",
       },
-      { property: "og:title", content: "Família Segolin — Diário no Japão" },
+      { property: "og:title", content: "Família Segolin — Vida & Missão" },
       {
         property: "og:description",
         content: "Histórias, viagens e descobertas da Família Segolin no Japão.",
