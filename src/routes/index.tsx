@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Família Segolin — Vida & Missão" },
       {
         property: "og:description",
-        content: "Histórias, viagens e descobertas da Família Segolin no Japão.",
+        content: "Família Segolin é uma família de missionários vivendo no Japão. Compartilhamos nossa jornada de fé, descobertas e desafios nessa terra de cultura rica e tradições milenares.",
       },
     ],
   }),
