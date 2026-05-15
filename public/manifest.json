@@ -1,0 +1,16 @@
+{
+  "name": "Família Segolin",
+  "short_name": "Família Segolin",
+  "description": "Diário da Família Segolin no Japão",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#2e2a22",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}

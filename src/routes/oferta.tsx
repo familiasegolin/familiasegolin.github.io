@@ -150,7 +150,7 @@ function Oferta() {
                     <span className="font-sans-news text-[11px] font-semibold text-muted-foreground min-w-[140px] shrink-0">
                       {k}
                     </span>
-                    <span className="font-sans-news text-[11px]">{v}</span>
+                    <span className="font-sans-news text-[11px] break-all min-w-0">{v}</span>
                   </div>
                 ) : (
                   <hr key={i} className="border-border my-2" />
