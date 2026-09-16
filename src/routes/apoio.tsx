@@ -153,7 +153,12 @@ function Apoio() {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit}>
+              <form
+                onSubmit={handleSubmit}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && step < 5) e.preventDefault();
+                }}
+              >
                 {/* STEP 1 */}
                 {step === 1 && (
                   <div className="space-y-2">
