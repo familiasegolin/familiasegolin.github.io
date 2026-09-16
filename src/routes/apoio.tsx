@@ -28,7 +28,6 @@ interface FormData {
   valor: string;
   moeda: Moeda;
   lembrete: Lembrete;
-  message: string;
 }
 
 const btnBase =
@@ -57,7 +56,6 @@ function Apoio() {
     valor: "",
     moeda: "reais",
     lembrete: "",
-    message: "",
   });
 
   const set =
@@ -156,7 +154,7 @@ function Apoio() {
               <form
                 onSubmit={handleSubmit}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && step < 5) e.preventDefault();
+                  if (e.key === "Enter" && step < 4) e.preventDefault();
                 }}
               >
                 {/* STEP 1 */}
@@ -291,21 +289,6 @@ function Apoio() {
                   </div>
                 )}
 
-                {/* STEP 5 */}
-                {step === 5 && (
-                  <div>
-                    <label className={labelCls} htmlFor="message">
-                      Mensagem / Observação:
-                    </label>
-                    <textarea
-                      id="message"
-                      value={form.message}
-                      onChange={set("message")}
-                      className={`${inputCls} h-28 resize-vertical`}
-                    />
-                  </div>
-                )}
-
                 {error && (
                   <p className="mt-3 font-sans-news text-[11px] text-destructive">{error}</p>
                 )}
@@ -316,7 +299,7 @@ function Apoio() {
                       ← Anterior
                     </button>
                   )}
-                  {step < 5 ? (
+                  {step < 4 ? (
                     <button type="button" onClick={next} className={btnPrimary}>
                       Próximo →
                     </button>
@@ -328,7 +311,7 @@ function Apoio() {
                 </div>
 
                 <p className="font-sans-news text-[10px] text-muted-foreground mt-4">
-                  Etapa {step} de 5
+                  Etapa {step} de 4
                 </p>
               </form>
             </>
