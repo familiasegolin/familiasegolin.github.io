@@ -8,7 +8,7 @@ export const Route = createFileRoute("/apoio")({
       { title: "Apoie-nos — Família Segolin" },
       {
         name: "description",
-        content: "Formulário de compromisso de apoio mensal à Família Segolin 2026.",
+        content: "Formulário de compromisso de apoio mensal à Família Segolin 2027.",
       },
     ],
   }),
@@ -111,7 +111,7 @@ function Apoio() {
         <p className="font-sans-news text-[10px] tracking-[0.3em] uppercase text-destructive mb-1">
           Compromisso anual
         </p>
-        <h1 className="font-serif font-black text-4xl">Formulário de Apoio 2026</h1>
+        <h1 className="font-serif font-black text-4xl">Formulário de Apoio 2027</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px]">
@@ -140,8 +140,8 @@ function Apoio() {
             <>
               <div className="mb-6 pb-5 news-border-b">
                 <p className="font-serif text-[14px] leading-relaxed mb-3">
-                  Este formulário é um compromisso de apoio mensal que vale de janeiro de 2026 até
-                  dezembro de 2026. Caso, no decorrer do ano, precise encerrar esse compromisso,
+                  Este formulário é um compromisso de apoio mensal que vale de janeiro de 2027 até
+                  dezembro de 2027. Caso, no decorrer do ano, precise encerrar esse compromisso,
                   basta nos comunicar. Obrigada por nos ajudar nessa caminhada.
                 </p>
                 <blockquote className="border-l-[3px] border-l-destructive pl-3 font-serif italic text-[13px] text-muted-foreground">
