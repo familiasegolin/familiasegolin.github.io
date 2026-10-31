@@ -94,6 +94,15 @@
 }
 
 @layer components {
+  /* No iPhone o campo de data ignora a largura se mantiver a aparência nativa */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
   .font-display {
     font-family: "Anton", "Arial Narrow", sans-serif;
     font-weight: 400;

@@ -32,6 +32,11 @@ interface FormData {
   ate_ano: string;
 }
 
+interface Membro {
+  nome: string;
+  aniversario: string;
+}
+
 const etapas = ["Quem", "Seus dados", "Contato", "Valor", "Confirmar"];
 
 const tipos: { valor: Tipo; texto: string; nome: string }[] = [
@@ -64,6 +69,8 @@ const meses = [
   "Dezembro",
 ];
 
+const dataBr = (d: string) => d.split("-").reverse().join("/");
+
 const textoLembrete = (l: Lembrete) => (l === "não" ? "Não receber" : `Dia ${l}`);
 
 const btnBase =
@@ -80,7 +87,7 @@ const sidebarLinks: [string, string][] = [
 ];
 
 const inputCls =
-  "block w-full min-h-12 mt-1 px-3 py-2 border border-border bg-white text-base outline-none focus:ring-2 focus:ring-foreground transition-shadow";
+  "block w-full min-w-0 max-w-full min-h-12 mt-1 px-3 py-2 border border-border bg-white text-base outline-none focus:ring-2 focus:ring-foreground transition-shadow";
 const labelCls = "block text-sm font-semibold mt-5 first:mt-0";
 
 function Opcao({
@@ -124,6 +131,7 @@ function Apoio() {
   const [enviando, setEnviando] = useState(false);
   const [armadilha, setArmadilha] = useState("");
   const chegouNaConfirmacao = useRef(0);
+  const [membros, setMembros] = useState<Membro[]>([{ nome: "", aniversario: "" }]);
   const [error, setError] = useState("");
   const [form, setForm] = useState<FormData>({
     tipo: "",
@@ -147,6 +155,13 @@ function Apoio() {
     setForm((f) => ({ ...f, [field]: v }));
   };
 
+  const ehGrupo = form.tipo === "grupo";
+  const membrosPreenchidos = membros
+    .map((m) => ({ ...m, nome: m.nome.trim() }))
+    .filter((m) => m.nome || m.aniversario);
+  const mudarMembro = (i: number, campo: keyof Membro, valor: string) =>
+    setMembros((l) => l.map((m, n) => (n === i ? { ...m, [campo]: valor } : m)));
+
   const tipoAtual = tipos.find((t) => t.valor === form.tipo);
   const moedaAtual = moedas.find((m) => m.valor === form.moeda)!;
 
@@ -161,6 +176,8 @@ function Apoio() {
     setError("");
     if (step === 1 && !form.tipo) return setError("Escolha uma opção para continuar.");
     if (step === 2 && !form.nome.trim()) return setError("Informe o nome.");
+    if (step === 2 && ehGrupo && membrosPreenchidos.some((m) => !m.nome))
+      return setError("Informe o nome de cada pessoa com aniversário.");
     if (step === 3 && !form.whatsapp.trim()) return setError("Informe o WhatsApp.");
     if (step === 3 && !form.informativo)
       return setError("Diga se quer entrar no grupo de informativos.");
@@ -183,7 +200,12 @@ function Apoio() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...form, site: armadilha }),
+          body: JSON.stringify({
+            ...form,
+            aniversario: ehGrupo ? "" : form.aniversario,
+            membros: ehGrupo ? membrosPreenchidos : [],
+            site: armadilha,
+          }),
         },
       );
       if (res.ok) {
@@ -202,8 +224,19 @@ function Apoio() {
   const resumo: [string, string, number][] = [
     ["Como", tipoAtual?.texto ?? "", 1],
     ["Nome", form.nome, 2],
-    ...(form.aniversario
-      ? ([["Aniversário", form.aniversario.split("-").reverse().join("/"), 2]] as [string, string, number][])
+    ...(!ehGrupo && form.aniversario
+      ? ([["Aniversário", dataBr(form.aniversario), 2]] as [string, string, number][])
+      : []),
+    ...(ehGrupo && membrosPreenchidos.length
+      ? ([
+          [
+            "Aniversários",
+            membrosPreenchidos
+              .map((m) => (m.aniversario ? `${m.nome} (${dataBr(m.aniversario)})` : m.nome))
+              .join(", "),
+            2,
+          ],
+        ] as [string, string, number][])
       : []),
     ["WhatsApp", form.whatsapp, 3],
     ["Grupo de informativos", form.informativo === "sim" ? "Sim" : "Não", 3],
@@ -316,16 +349,71 @@ function Apoio() {
                       onChange={set("nome")}
                       className={inputCls}
                     />
-                    <label className={labelCls} htmlFor="aniversario">
-                      Aniversário <span className="font-normal">(opcional)</span>
-                    </label>
-                    <input
-                      id="aniversario"
-                      type="date"
-                      value={form.aniversario}
-                      onChange={set("aniversario")}
-                      className={inputCls}
-                    />
+                    {ehGrupo ? (
+                      <fieldset className="mt-5">
+                        <legend className="text-sm font-semibold mb-2">
+                          Aniversários do grupo <span className="font-normal">(opcional)</span>
+                        </legend>
+                        <div className="space-y-3">
+                          {membros.map((m, i) => (
+                            <div key={i} className="relative border border-foreground p-3 pr-11">
+                              <label className="block text-sm" htmlFor={`membro-nome-${i}`}>
+                                Nome
+                              </label>
+                              <input
+                                id={`membro-nome-${i}`}
+                                type="text"
+                                value={m.nome}
+                                onChange={(e) => mudarMembro(i, "nome", e.target.value)}
+                                className={inputCls}
+                              />
+                              <label className="block text-sm mt-3" htmlFor={`membro-data-${i}`}>
+                                Aniversário
+                              </label>
+                              <input
+                                id={`membro-data-${i}`}
+                                type="date"
+                                value={m.aniversario}
+                                onChange={(e) => mudarMembro(i, "aniversario", e.target.value)}
+                                className={inputCls}
+                              />
+                              {membros.length > 1 && (
+                                <button
+                                  type="button"
+                                  onClick={() => setMembros((l) => l.filter((_, n) => n !== i))}
+                                  className="absolute right-0 top-0 h-11 w-11 text-lg hover:text-destructive"
+                                  aria-label={`Remover pessoa ${i + 1}`}
+                                >
+                                  ✕
+                                </button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        {membros.length < 20 && (
+                          <button
+                            type="button"
+                            onClick={() => setMembros((l) => [...l, { nome: "", aniversario: "" }])}
+                            className="mt-3 min-h-11 font-semibold underline underline-offset-4 hover:text-destructive"
+                          >
+                            + Adicionar pessoa
+                          </button>
+                        )}
+                      </fieldset>
+                    ) : (
+                      <>
+                        <label className={labelCls} htmlFor="aniversario">
+                          Aniversário <span className="font-normal">(opcional)</span>
+                        </label>
+                        <input
+                          id="aniversario"
+                          type="date"
+                          value={form.aniversario}
+                          onChange={set("aniversario")}
+                          className={inputCls}
+                        />
+                      </>
+                    )}
                   </div>
                 )}
 
@@ -379,7 +467,7 @@ function Apoio() {
                 {/* STEP 4 */}
                 {step === 4 && (
                   <div>
-                    <div className="grid grid-cols-[1fr_1fr] gap-3">
+                    <div className="grid grid-cols-2 items-end gap-3">
                       <div>
                         <label className={labelCls} htmlFor="valor">
                           Valor mensal
@@ -423,7 +511,7 @@ function Apoio() {
                       <legend className="text-sm font-semibold mb-1">
                         Até quando vai seu compromisso?
                       </legend>
-                      <div className="grid grid-cols-[1fr_1fr] gap-3">
+                      <div className="grid grid-cols-2 items-end gap-3">
                         <select
                           aria-label="Mês"
                           value={form.ate_mes}
