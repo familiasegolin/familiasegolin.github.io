@@ -5,7 +5,7 @@ import { PageLayout } from "@/components/PageLayout";
 export const Route = createFileRoute("/oferta")({
   head: () => ({
     meta: [
-      { title: "Como Ofertar — Família Segolin" },
+      { title: "Ofertar — Família Segolin" },
       {
         name: "description",
         content: "Dados bancários para ofertar à Família Segolin em diversas moedas.",
@@ -109,15 +109,15 @@ function Oferta() {
 
   return (
     <PageLayout>
-      <div className="news-border-b px-8 py-4">
-        <p className="font-sans-news text-[10px] tracking-[0.3em] uppercase text-destructive mb-1">
+      <div className="cabecalho-pagina">
+        <p className="font-sans-news text-xs mb-1">
           Nossas contas
         </p>
-        <h1 className="font-serif font-black text-4xl">Como Ofertar</h1>
+        <h1 className="font-display text-5xl lg:text-7xl">Ofertar</h1>
       </div>
 
-      <div className="p-8">
-        <p className="font-sans-news text-[11px] tracking-[0.15em] text-muted-foreground mb-6">
+      <div className="px-5 lg:px-14 pb-10">
+        <p className="font-sans-news text-sm text-muted-foreground mb-6">
           Obrigada por contribuir e confiar em nós. Deus te abençoe! Selecione a moeda para ver os
           dados bancários.
         </p>
@@ -127,7 +127,7 @@ function Oferta() {
             <button
               key={m.key}
               onClick={() => setSelecionada(m.key)}
-              className={`px-4 py-2 font-sans-news text-[11px] tracking-[0.14em] uppercase border transition-colors ${
+              className={`px-4 py-2 font-sans-news text-sm border transition-colors ${
                 selecionada === m.key
                   ? "bg-foreground text-background border-foreground"
                   : "bg-background text-foreground border-border hover:bg-foreground hover:text-background hover:border-foreground"
@@ -141,23 +141,23 @@ function Oferta() {
         {conta && (
           <div className="max-w-lg border-t-[3px] border-t-destructive news-border">
             <div className="px-5 py-3.5 bg-muted news-border-b">
-              <h2 className="font-serif font-bold text-xl">{conta.titulo}</h2>
+              <h2 className="font-display text-2xl">{conta.titulo}</h2>
             </div>
             <div className="p-5 space-y-0">
               {conta.linhas.map(([k, v], i) =>
                 v ? (
                   <div key={i} className="flex gap-3 py-2 border-b border-muted last:border-0">
-                    <span className="font-sans-news text-[11px] font-semibold text-muted-foreground min-w-[140px] shrink-0">
+                    <span className="font-sans-news text-sm font-semibold text-muted-foreground min-w-[140px] shrink-0">
                       {k}
                     </span>
-                    <span className="font-sans-news text-[11px] break-all min-w-0">{v}</span>
+                    <span className="font-sans-news text-sm break-all min-w-0">{v}</span>
                   </div>
                 ) : (
                   <hr key={i} className="border-border my-2" />
                 ),
               )}
               {conta.obs && (
-                <p className="mt-4 font-sans-news text-[11px] text-muted-foreground leading-relaxed border-l-[3px] border-l-destructive pl-3 py-1">
+                <p className="mt-4 font-sans-news text-sm text-muted-foreground leading-relaxed border-l-[3px] border-l-destructive pl-3 py-1">
                   {conta.obs}
                 </p>
               )}

@@ -38,15 +38,15 @@ const contatos = [
 function Contato() {
   return (
     <PageLayout>
-      <div className="news-border-b px-8 py-4">
-        <p className="font-sans-news text-[10px] tracking-[0.3em] uppercase text-destructive mb-1">
+      <div className="cabecalho-pagina">
+        <p className="font-sans-news text-xs mb-1">
           WhatsApp
         </p>
-        <h1 className="font-serif font-black text-4xl">Contato</h1>
+        <h1 className="font-display text-5xl lg:text-7xl">Contato</h1>
       </div>
 
-      <div className="p-8">
-        <p className="font-sans-news text-[11px] tracking-[0.15em] text-muted-foreground mb-8">
+      <div className="px-5 lg:px-14 pb-10">
+        <p className="font-sans-news text-sm text-muted-foreground mb-8">
           Entre em contato conosco via WhatsApp.
         </p>
 
@@ -65,11 +65,11 @@ function Contato() {
                 className="w-12 h-12 rounded-full object-cover object-top shrink-0 border border-border group-hover:border-background/30"
               />
               <div className="flex-1 min-w-0">
-                <p className="font-sans-news text-[11px] tracking-[0.06em] uppercase font-semibold">
+                <p className="font-sans-news text-sm font-semibold">
                   {c.nome}
                 </p>
                 {c.sub && (
-                  <p className="font-serif text-[12px] text-muted-foreground mt-0.5 group-hover:text-background/60">
+                  <p className="font-serif text-base text-muted-foreground mt-0.5 group-hover:text-background/60">
                     {c.sub}
                   </p>
                 )}

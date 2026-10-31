@@ -30,57 +30,36 @@
   --color-ring: var(--ring);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
-  --font-serif: "Playfair Display", "Times New Roman", serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.25rem;
-  /* Vintage newspaper palette */
-  --paper: oklch(0.96 0.012 85);
-  --ink: oklch(0.18 0.008 60);
+  /* Paleta do pôster: papel, tinta e sol */
+  --sol: #d7301f;
+  --paper: #f6f3ee;
+  --ink: #111111;
 
-  --background: oklch(0.96 0.012 85);
-  --foreground: oklch(0.18 0.008 60);
-  --card: oklch(0.96 0.012 85);
-  --card-foreground: oklch(0.18 0.008 60);
-  --popover: oklch(0.96 0.012 85);
-  --popover-foreground: oklch(0.18 0.008 60);
-  --primary: oklch(0.18 0.008 60);
-  --primary-foreground: oklch(0.96 0.012 85);
-  --secondary: oklch(0.92 0.012 85);
-  --secondary-foreground: oklch(0.18 0.008 60);
-  --muted: oklch(0.92 0.012 85);
-  --muted-foreground: oklch(0.45 0.012 60);
-  --accent: oklch(0.92 0.012 85);
-  --accent-foreground: oklch(0.18 0.008 60);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.96 0.012 85);
-  --border: oklch(0.18 0.008 60);
-  --input: oklch(0.18 0.008 60);
-  --ring: oklch(0.18 0.008 60);
-}
-
-@font-face {
-  font-family: "Playfair Display";
-  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.woff2") format("woff2");
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Playfair Display";
-  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFkD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2") format("woff2");
-  font-weight: 400 900;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+  --background: #f6f3ee;
+  --foreground: #111111;
+  --card: #f6f3ee;
+  --card-foreground: #111111;
+  --popover: #f6f3ee;
+  --popover-foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #f6f3ee;
+  --secondary: #ebe6dd;
+  --secondary-foreground: #111111;
+  --muted: #ebe6dd;
+  --muted-foreground: #5c5a55;
+  --accent: #ebe6dd;
+  --accent-foreground: #111111;
+  --destructive: #c4281a;
+  --destructive-foreground: #ffffff;
+  --border: #111111;
+  --input: #111111;
+  --ring: #111111;
 }
 
 @layer base {
@@ -94,7 +73,6 @@
   }
   .font-sans-news {
     font-family: var(--font-sans);
-    letter-spacing: 0.02em;
   }
 }
 
@@ -112,5 +90,157 @@
   }
   .news-img {
     filter: grayscale(1) contrast(1.05);
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Anton", "Arial Narrow", sans-serif;
+    font-weight: 400;
+    line-height: 1.14;
+    text-transform: uppercase;
+  }
+  .font-japones {
+    font-family: "Noto Serif JP", serif;
+  }
+
+  /* Abertura da página inicial: no celular tudo empilha; no computador a foto vai à direita */
+  .poster {
+    display: grid;
+    overflow-x: clip;
+    gap: 16px;
+    padding: 4px 20px 32px;
+  }
+  .poster-titulo {
+    /* "PEREGRINOS" mede cerca de 4,4 vezes a fonte: assim ocupa a largura de qualquer celular */
+    font-size: calc((100vw - 40px) / 4.45);
+  }
+  .poster-foto {
+    position: relative;
+    padding-right: 38px;
+  }
+  .poster-foto img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 83 / 100;
+    object-fit: cover;
+    object-position: top;
+  }
+  .poster-sol {
+    position: absolute;
+    right: -90px;
+    top: -14px;
+    width: 95vw;
+    max-width: 370px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--sol);
+  }
+  .poster-frase {
+    position: absolute;
+    right: -6px;
+    top: 10px;
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.1em;
+  }
+  /* Topo das páginas internas: a faixa preta e o sol da abertura */
+  .cabecalho-pagina {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+    padding: 36px 20px 40px;
+    background: var(--ink);
+    color: #fff;
+  }
+  .cabecalho-pagina p {
+    position: relative;
+    color: #ff7a66;
+  }
+  .cabecalho-pagina h1 {
+    position: relative;
+    max-width: 80%;
+  }
+  .cabecalho-pagina::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    width: 120px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--sol);
+    transform: translateY(-50%);
+  }
+  .botao-poster {
+    margin-top: 24px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    padding: 16px 30px;
+    transition: background-color 0.2s;
+  }
+  .botao-poster:hover {
+    background: var(--sol);
+  }
+  .barra-mantenedor {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 1024px) {
+    .poster {
+      max-width: 1400px;
+      margin: 0 auto;
+      grid-template-columns: minmax(0, 1fr) 520px;
+      grid-template-rows: auto 1fr;
+      gap: 24px 40px;
+      padding: 16px 56px 56px;
+    }
+    .cabecalho-pagina {
+      padding: 52px 56px 56px;
+    }
+    .cabecalho-pagina::after {
+      right: 72px;
+      width: 220px;
+    }
+    .poster-titulo {
+      font-size: clamp(96px, 10.8vw, 160px);
+      grid-column: 1;
+      white-space: nowrap;
+    }
+    .poster-texto {
+      grid-column: 1;
+      align-self: end;
+      max-width: 540px;
+    }
+    .poster-foto {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      padding-right: 72px;
+      margin-top: 32px;
+    }
+    .poster-sol {
+      width: 520px;
+      max-width: none;
+      right: -30px;
+      top: -40px;
+    }
+    .poster-frase {
+      right: -8px;
+      font-size: 28px;
+      letter-spacing: 0.14em;
+    }
   }
 }

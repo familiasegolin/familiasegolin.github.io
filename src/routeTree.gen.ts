@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as OfertaRouteImport } from './routes/oferta'
-import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ApoioRouteImport } from './routes/apoio'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,11 +23,6 @@ const SobreRoute = SobreRouteImport.update({
 const OfertaRoute = OfertaRouteImport.update({
   id: '/oferta',
   path: '/oferta',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GaleriaRoute = GaleriaRouteImport.update({
-  id: '/galeria',
-  path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -51,7 +45,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
-  '/galeria': typeof GaleriaRoute
   '/oferta': typeof OfertaRoute
   '/sobre': typeof SobreRoute
 }
@@ -59,7 +52,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
-  '/galeria': typeof GaleriaRoute
   '/oferta': typeof OfertaRoute
   '/sobre': typeof SobreRoute
 }
@@ -68,30 +60,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
-  '/galeria': typeof GaleriaRoute
   '/oferta': typeof OfertaRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/apoio' | '/contato' | '/galeria' | '/oferta' | '/sobre'
+  fullPaths: '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/apoio' | '/contato' | '/galeria' | '/oferta' | '/sobre'
-  id:
-    | '__root__'
-    | '/'
-    | '/apoio'
-    | '/contato'
-    | '/galeria'
-    | '/oferta'
-    | '/sobre'
+  to: '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
+  id: '__root__' | '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApoioRoute: typeof ApoioRoute
   ContatoRoute: typeof ContatoRoute
-  GaleriaRoute: typeof GaleriaRoute
   OfertaRoute: typeof OfertaRoute
   SobreRoute: typeof SobreRoute
 }
@@ -110,13 +93,6 @@ declare module '@tanstack/react-router' {
       path: '/oferta'
       fullPath: '/oferta'
       preLoaderRoute: typeof OfertaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/galeria': {
-      id: '/galeria'
-      path: '/galeria'
-      fullPath: '/galeria'
-      preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -147,7 +123,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApoioRoute: ApoioRoute,
   ContatoRoute: ContatoRoute,
-  GaleriaRoute: GaleriaRoute,
   OfertaRoute: OfertaRoute,
   SobreRoute: SobreRoute,
 }

@@ -6,9 +6,8 @@ export { Mail } from "lucide-react";
 const navItems = [
   { label: "Início", to: "/" as const },
   { label: "Quem Somos", to: "/sobre" as const },
-  { label: "Galeria", to: "/galeria" as const },
-  { label: "Apoie-nos", to: "/apoio" as const },
-  { label: "Como Ofertar", to: "/oferta" as const },
+  { label: "Torne-se um mantenedor", to: "/apoio" as const },
+  { label: "Ofertar", to: "/oferta" as const },
   { label: "Contato", to: "/contato" as const },
 ];
 
@@ -40,112 +39,24 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
   const { location } = useRouterState();
   const pathname = location.pathname;
   const [menuOpen, setMenuOpen] = useState(false);
+  // Nas páginas de apoio a pessoa já chegou aonde o botão levaria
+  const mostraMantenedor = pathname !== "/apoio" && pathname !== "/oferta";
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-3 lg:p-4">
-      <div className="mx-auto max-w-[1400px] news-border bg-background">
-        {/* MASTHEAD */}
-        <header className="news-border-b">
-          {/* Desktop: 3 columns */}
-          <div className="hidden lg:grid grid-cols-[180px_1fr_220px]">
-            <div className="flex items-center justify-center news-border-r p-4">
-              <img
-                src={logoJapa}
-                alt="Família Segolin logo"
-                className="h-20 w-auto object-contain"
-              />
-            </div>
-            <div className="text-center px-6 py-4">
-              <p className="font-sans-news text-[11px] tracking-[0.3em] uppercase mb-1">
-                Japão • missão
-              </p>
-              <Link to="/">
-                <h1 className="font-serif font-black text-5xl lg:text-6xl tracking-tight leading-none hover:opacity-80 transition-opacity">
-                  FAMÍLIA SEGOLIN
-                </h1>
-              </Link>
-              <p className="font-sans-news text-[11px] tracking-[0.25em] uppercase mt-2">
-                peregrinos na terra do sol nascente
-              </p>
-            </div>
-            <div className="text-center news-border-l p-4 flex flex-col justify-center font-sans-news text-[11px] tracking-[0.2em] uppercase">
-              <p className="font-bold">Saku</p>
-              <p className="mb-3">Nagano, Japão</p>
-              <p>08 de maio, 2025</p>
-              <p>Edição #01</p>
-            </div>
-          </div>
+    <div className={`min-h-screen bg-background text-foreground ${mostraMantenedor ? "pb-16 lg:pb-0" : ""}`}>
+      <header className="relative z-20 mx-auto flex max-w-[1400px] items-center justify-between px-5 lg:px-14 py-4 lg:py-6">
+        <Link to="/" className="flex items-center gap-3 font-semibold text-base">
+          <img src={logoJapa} alt="" className="h-8 w-auto object-contain" />
+          Família Segolin
+        </Link>
 
-          {/* Mobile: logo + title + hamburger */}
-          <div className="lg:hidden grid grid-cols-[56px_1fr_56px] items-stretch">
-            <div className="flex items-center justify-center news-border-r p-3">
-              <img
-                src={logoJapa}
-                alt="Família Segolin logo"
-                className="h-10 w-auto object-contain"
-              />
-            </div>
-            <div className="text-center px-3 py-3">
-              <p className="font-sans-news text-[9px] tracking-[0.3em] uppercase mb-0.5">
-                Japão • missão
-              </p>
-              <Link to="/">
-                <h1 className="font-serif font-black text-2xl tracking-tight leading-none">
-                  FAMÍLIA SEGOLIN
-                </h1>
-              </Link>
-              <p className="font-sans-news text-[9px] tracking-[0.2em] uppercase mt-1">
-                peregrinos na terra do sol nascente
-              </p>
-            </div>
-            <button
-              onClick={() => setMenuOpen((o) => !o)}
-              className="news-border-l flex items-center justify-center p-3 text-xl"
-              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            >
-              {menuOpen ? "✕" : "☰"}
-            </button>
-          </div>
-
-          {/* Mobile date strip */}
-          <div className="lg:hidden news-border-t text-center py-2 font-sans-news text-[9px] tracking-[0.2em] uppercase">
-            <span className="font-bold">Saku</span>
-            {" · "}Nagano, Japão{" · "}08 de maio, 2025{" · "}Edição #01
-          </div>
-
-          {/* Mobile dropdown nav */}
-          {menuOpen && (
-            <nav className="lg:hidden news-border-t">
-              {navItems.map((item, i) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setMenuOpen(false)}
-                  className={`block py-3 px-5 font-serif italic text-base transition-colors ${
-                    i < navItems.length - 1 ? "news-border-b" : ""
-                  } ${
-                    pathname === item.to
-                      ? "bg-foreground text-background"
-                      : "hover:bg-foreground hover:text-background"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          )}
-        </header>
-
-        {/* Desktop NAV */}
-        <nav className="hidden lg:grid grid-cols-6 news-border-b">
-          {navItems.map((item, i) => (
+        <nav className="hidden lg:flex items-center gap-7">
+          {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className={`text-center py-3 font-serif italic text-base transition-colors ${i > 0 ? "news-border-l" : ""} ${
-                pathname === item.to
-                  ? "bg-foreground text-background"
-                  : "hover:bg-foreground hover:text-background"
+              className={`py-1 text-sm font-semibold transition-colors hover:text-destructive ${
+                pathname === item.to ? "border-b-2 border-destructive" : ""
               }`}
             >
               {item.label}
@@ -153,35 +64,74 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
           ))}
         </nav>
 
-        {children}
+        <button
+          onClick={() => setMenuOpen((o) => !o)}
+          className="lg:hidden flex h-11 w-11 items-center justify-center -mr-2 text-2xl"
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+      </header>
 
-        {/* COPYRIGHT */}
-        <footer className="news-border-t grid grid-cols-3 p-3 font-sans-news text-[10px] tracking-[0.2em] uppercase">
+      {menuOpen && (
+        <nav className="lg:hidden news-border-t news-border-b">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setMenuOpen(false)}
+              className={`block px-5 py-4 text-base font-semibold ${
+                pathname === item.to ? "bg-foreground text-background" : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+
+      <div>{children}</div>
+
+      <footer className="news-border-t">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-3 px-5 lg:px-14 py-5 text-sm">
           <p>© Desenvolvido por Rebecca Segolin</p>
-          <p className="text-center flex items-center justify-center gap-3">
+          <p className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/familiasegolin/"
               target="_blank"
               rel="noreferrer"
-              className="hover:opacity-60 transition-opacity"
+              aria-label="Instagram"
+              className="hover:text-destructive transition-colors"
             >
-              <InstagramSvg className="h-3 w-3" />
+              <InstagramSvg className="h-5 w-5" />
             </a>
             <a
               href="https://www.youtube.com/@familiasegolin"
               target="_blank"
               rel="noreferrer"
-              className="hover:opacity-60 transition-opacity"
+              aria-label="YouTube"
+              className="hover:text-destructive transition-colors"
             >
-              <YoutubeSvg className="h-3 w-3" />
+              <YoutubeSvg className="h-5 w-5" />
             </a>
-            <a href="/contato" className="hover:opacity-60 transition-opacity">
-              <WhatsAppIcon className="h-3 w-3" />
+            <a
+              href="/contato"
+              aria-label="Contato"
+              className="hover:text-destructive transition-colors"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
             </a>
           </p>
-          <p className="text-right">YHWH</p>
-        </footer>
-      </div>
+          <p>YHWH</p>
+        </div>
+      </footer>
+
+      {mostraMantenedor && (
+        <Link to="/apoio" className="barra-mantenedor lg:hidden">
+          Torne-se um mantenedor
+        </Link>
+      )}
     </div>
   );
 }
