@@ -87,7 +87,7 @@ const sidebarLinks: [string, string][] = [
 ];
 
 const inputCls =
-  "block w-full min-w-0 max-w-full min-h-12 mt-1 px-3 py-2 border border-border bg-white text-base outline-none focus:ring-2 focus:ring-foreground transition-shadow";
+  "block w-full min-w-0 max-w-full h-12 mt-1 px-3 py-0 border border-border bg-white text-base outline-none focus:ring-2 focus:ring-foreground transition-shadow";
 const labelCls = "block text-sm font-semibold mt-5 first:mt-0";
 
 function Opcao({
@@ -467,7 +467,7 @@ function Apoio() {
                 {/* STEP 4 */}
                 {step === 4 && (
                   <div>
-                    <div className="grid grid-cols-2 items-end gap-3">
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className={labelCls} htmlFor="valor">
                           Valor mensal
@@ -511,7 +511,7 @@ function Apoio() {
                       <legend className="text-sm font-semibold mb-1">
                         Até quando vai seu compromisso?
                       </legend>
-                      <div className="grid grid-cols-2 items-end gap-3">
+                      <div className="grid grid-cols-2 gap-3">
                         <select
                           aria-label="Mês"
                           value={form.ate_mes}
