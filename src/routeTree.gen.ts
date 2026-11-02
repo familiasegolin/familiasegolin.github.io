@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as PixRecorrenteRouteImport } from './routes/pix-recorrente'
 import { Route as OfertaRouteImport } from './routes/oferta'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ApoioRouteImport } from './routes/apoio'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PixRecorrenteRoute = PixRecorrenteRouteImport.update({
+  id: '/pix-recorrente',
+  path: '/pix-recorrente',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OfertaRoute = OfertaRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
   '/oferta': typeof OfertaRoute
+  '/pix-recorrente': typeof PixRecorrenteRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
   '/oferta': typeof OfertaRoute
+  '/pix-recorrente': typeof PixRecorrenteRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,28 @@ export interface FileRoutesById {
   '/apoio': typeof ApoioRoute
   '/contato': typeof ContatoRoute
   '/oferta': typeof OfertaRoute
+  '/pix-recorrente': typeof PixRecorrenteRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
+  fullPaths:
+    | '/'
+    | '/apoio'
+    | '/contato'
+    | '/oferta'
+    | '/pix-recorrente'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
-  id: '__root__' | '/' | '/apoio' | '/contato' | '/oferta' | '/sobre'
+  to: '/' | '/apoio' | '/contato' | '/oferta' | '/pix-recorrente' | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/apoio'
+    | '/contato'
+    | '/oferta'
+    | '/pix-recorrente'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +98,7 @@ export interface RootRouteChildren {
   ApoioRoute: typeof ApoioRoute
   ContatoRoute: typeof ContatoRoute
   OfertaRoute: typeof OfertaRoute
+  PixRecorrenteRoute: typeof PixRecorrenteRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/sobre'
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pix-recorrente': {
+      id: '/pix-recorrente'
+      path: '/pix-recorrente'
+      fullPath: '/pix-recorrente'
+      preLoaderRoute: typeof PixRecorrenteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/oferta': {
@@ -124,6 +154,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApoioRoute: ApoioRoute,
   ContatoRoute: ContatoRoute,
   OfertaRoute: OfertaRoute,
+  PixRecorrenteRoute: PixRecorrenteRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport

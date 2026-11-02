@@ -79,10 +79,7 @@ const btnOutline = `${btnBase} border-foreground bg-background text-foreground h
 const btnPrimary = `${btnBase} flex-1 sm:flex-none border-foreground bg-foreground text-background hover:bg-destructive hover:border-destructive`;
 
 const sidebarLinks: [string, string][] = [
-  [
-    "Como programar o PIX recorrente",
-    "https://docs.google.com/spreadsheets/d/1n_JPwwq_5Q8L7VKNSJf4jQRtSBOOtEKSFpbkZOQoytQ/edit?usp=sharing",
-  ],
+  ["Como programar o PIX recorrente", "/pix-recorrente"],
   ["Entre no grupo de informativos", "https://chat.whatsapp.com/BfkTFQK31rU9ThG0Ek1Ogu"],
 ];
 
