@@ -54,10 +54,6 @@ function Sobre() {
         ))}
 
         <div className="lg:col-span-2">
-          <p className="text-base mb-5">
-            Somos enviados pela Igreja Atos 2, em Maricá (RJ), e pela Igreja Batista Monte das
-            Oliveiras, em Guararapes (SP).
-          </p>
           <Link to="/apoio" className="botao-poster inline-block !mt-0">
             Torne-se um mantenedor
           </Link>
