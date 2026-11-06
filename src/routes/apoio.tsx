@@ -30,6 +30,7 @@ interface FormData {
   lembrete: Lembrete;
   ate_mes: string;
   ate_ano: string;
+  pedido_oracao: string;
 }
 
 interface Membro {
@@ -141,6 +142,7 @@ function Apoio() {
     lembrete: "",
     ate_mes: "12",
     ate_ano: String(anoAtual + 1),
+    pedido_oracao: "",
   });
 
   const set =
@@ -240,6 +242,9 @@ function Apoio() {
     ["Valor mensal", `${moedaAtual.simbolo} ${form.valor}${moedaAtual.simbolo ? "" : " (outra moeda)"}`.trim(), 4],
     ["Compromisso até", `${meses[Number(form.ate_mes) - 1]} de ${form.ate_ano}`, 4],
     ["Lembrete", form.lembrete ? textoLembrete(form.lembrete) : "", 4],
+    ...(form.pedido_oracao.trim()
+      ? ([["Pedido de oração", form.pedido_oracao.trim(), 3]] as [string, string, number][])
+      : []),
   ];
 
   return (
@@ -458,6 +463,20 @@ function Apoio() {
                         </Opcao>
                       </div>
                     </fieldset>
+                    <label className={labelCls} htmlFor="pedido_oracao">
+                      Pedido de oração (opcional)
+                    </label>
+                    <p className="text-sm text-muted-foreground">
+                      Como podemos orar por você?
+                    </p>
+                    <textarea
+                      id="pedido_oracao"
+                      rows={3}
+                      maxLength={1000}
+                      value={form.pedido_oracao}
+                      onChange={set("pedido_oracao")}
+                      className={inputCls.replace("h-12", "min-h-24").replace("py-0", "py-2")}
+                    />
                   </div>
                 )}
 
