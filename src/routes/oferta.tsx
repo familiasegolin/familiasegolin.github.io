@@ -103,9 +103,36 @@ const contas: Record<MoedaKey, { titulo: string; linhas: Linha[]; obs: string | 
   },
 };
 
+// Copia o dado da conta; sem a API de área de transferência (navegador antigo), usa um campo escondido
+async function copiarTexto(texto: string) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    return true;
+  } catch {
+    const campo = document.createElement("textarea");
+    campo.value = texto;
+    campo.setAttribute("readonly", "");
+    campo.style.position = "fixed";
+    campo.style.opacity = "0";
+    document.body.appendChild(campo);
+    campo.select();
+    const ok = document.execCommand("copy");
+    campo.remove();
+    return ok;
+  }
+}
+
 function Oferta() {
   const [selecionada, setSelecionada] = useState<MoedaKey | null>(null);
+  const [copiado, setCopiado] = useState<string | null>(null);
   const conta = selecionada ? contas[selecionada] : null;
+
+  async function copiar(chave: string, texto: string) {
+    if (await copiarTexto(texto)) {
+      setCopiado(chave);
+      setTimeout(() => setCopiado((c) => (c === chave ? null : c)), 2500);
+    }
+  }
 
   return (
     <PageLayout>
@@ -146,11 +173,26 @@ function Oferta() {
             <div className="p-5 space-y-0">
               {conta.linhas.map(([k, v], i) =>
                 v ? (
-                  <div key={i} className="flex gap-3 py-2 border-b border-muted last:border-0">
-                    <span className="font-sans-news text-sm font-semibold text-muted-foreground min-w-[140px] shrink-0">
+                  <div
+                    key={i}
+                    className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 border-b border-muted last:border-0"
+                  >
+                    <span className="font-sans-news text-sm font-semibold text-muted-foreground w-full sm:w-auto sm:min-w-[140px] shrink-0">
                       {k}
                     </span>
-                    <span className="font-sans-news text-sm break-all min-w-0">{v}</span>
+                    <span className="font-sans-news text-sm break-all min-w-0 flex-1">{v}</span>
+                    <button
+                      type="button"
+                      onClick={() => copiar(`${selecionada}-${i}`, v)}
+                      aria-label={`Copiar ${k}`}
+                      className={`shrink-0 min-h-9 px-3 font-sans-news text-xs font-semibold border transition-colors ${
+                        k === "PIX"
+                          ? "border-foreground bg-foreground text-background hover:bg-destructive hover:border-destructive"
+                          : "border-border bg-background text-foreground hover:bg-foreground hover:text-background"
+                      }`}
+                    >
+                      {copiado === `${selecionada}-${i}` ? "Copiado" : "Copiar"}
+                    </button>
                   </div>
                 ) : (
                   <hr key={i} className="border-border my-2" />
